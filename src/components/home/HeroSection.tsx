@@ -33,24 +33,19 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent" />
       </div>
 
-      <div className="absolute left-6 right-6 top-6 z-20 flex flex-col items-center justify-between gap-6 md:flex-row">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="group flex items-center gap-4 rounded-[1.75rem] border border-white/25 bg-white/12 px-4 py-3 text-left backdrop-blur-xl shadow-[0_24px_80px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02]"
-        >
-          <div className="flex h-16 w-16 items-center justify-center rounded-[1.25rem] border border-white/20 bg-white/90 shadow-inner shadow-white/60">
-            <img
-              src="/logo.png"
-              alt="Global Encounters Logo"
-              className="h-11 w-11 object-contain drop-shadow-[0_8px_16px_rgba(35,118,188,0.35)]"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-          <div className="font-headline text-xl font-extrabold tracking-tight text-white">
-            Global Encounters Festival
-          </div>
-        </button>
-        <div className="flex flex-wrap items-center justify-center gap-3 md:justify-end">
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="absolute left-1/2 top-0 z-30 flex -translate-x-1/2 items-center justify-center rounded-b-[2rem] bg-white px-0 shadow-md transition-transform hover:scale-[1.02]"
+      >
+        <img
+          src="/logo.png"
+          alt="Global Encounters Logo"
+          className="h-65 w-65 object-contain drop-shadow-[0_8px_16px_rgba(35,118,188,0.35)]"
+          referrerPolicy="no-referrer"
+        />
+      </button>
+
+      <div className="absolute left-6 right-6 top-64 z-20 flex flex-wrap items-center justify-center gap-3 md:top-6 md:justify-end">
           {heroLinks.map((link) => (
             <button
               key={link.id}
@@ -61,13 +56,12 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             </button>
           ))}
         </div>
-      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-5xl px-6 pt-28 text-center"
+        className="relative z-10 max-w-5xl px-6 pt-80 text-center md:pt-64"
       >
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-sm">
           <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
