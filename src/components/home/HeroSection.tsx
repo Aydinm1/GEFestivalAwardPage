@@ -1,18 +1,16 @@
 import { motion } from 'motion/react';
 
-import type { View } from '../../types.ts';
-
 type HeroSectionProps = {
-  setView: (view: View) => void;
+  onNavigate: (sectionId: string) => void;
 };
 
-const heroLinks: Array<{ id: View; label: string }> = [
-  { id: 'impact', label: 'Impact' },
-  { id: 'legacy', label: 'Legacy' },
-  { id: 'sustainability', label: 'Sustainability' },
+const heroLinks = [
+  { id: 'impact-section', label: 'Impact' },
+  { id: 'legacy-section', label: 'Legacy' },
+  { id: 'sustainability-section', label: 'Sustainability' },
 ];
 
-export default function HeroSection({ setView }: HeroSectionProps) {
+export default function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0">
@@ -37,7 +35,7 @@ export default function HeroSection({ setView }: HeroSectionProps) {
 
       <div className="absolute left-6 right-6 top-6 z-20 flex justify-center md:justify-start">
         <button
-          onClick={() => setView('home')}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="group flex items-center gap-4 rounded-[1.75rem] border border-white/25 bg-white/12 px-4 py-3 text-left backdrop-blur-xl shadow-[0_24px_80px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02]"
         >
           <div className="flex h-16 w-16 items-center justify-center rounded-[1.25rem] border border-white/20 bg-white/90 shadow-inner shadow-white/60">
@@ -78,7 +76,7 @@ export default function HeroSection({ setView }: HeroSectionProps) {
             {heroLinks.map((link) => (
               <button
                 key={link.id}
-                onClick={() => setView(link.id)}
+                onClick={() => onNavigate(link.id)}
                 className="rounded-full border border-white/25 bg-white/12 px-6 py-3 font-headline text-sm font-bold uppercase tracking-[0.22em] text-white backdrop-blur-md transition-all hover:border-primary hover:bg-primary hover:shadow-[0_20px_40px_rgba(35,118,188,0.35)]"
               >
                 {link.label}

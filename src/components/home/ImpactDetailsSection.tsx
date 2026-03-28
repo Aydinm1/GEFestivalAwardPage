@@ -1,39 +1,21 @@
-import { motion } from 'motion/react';
-import { ArrowLeft, BarChart3, Users2, Zap } from 'lucide-react';
+import { BarChart3, Users2, Zap } from 'lucide-react';
 
-type ImpactPageProps = {
-  onBack: () => void;
-};
-
-export default function ImpactPage({ onBack }: ImpactPageProps) {
+export default function ImpactDetailsSection() {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen bg-white">
-      <div className="relative overflow-hidden bg-secondary px-6 py-20 text-center text-white">
-        <div className="pointer-events-none absolute inset-0 opacity-10">
-          <svg className="h-full w-full scale-150" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.93 9h-3.02a15.8 15.8 0 0 0-1.3-5.02A8.03 8.03 0 0 1 19.93 11Zm-7.93 9a13.8 13.8 0 0 1-2.04-7h4.08a13.8 13.8 0 0 1-2.04 7Zm-2.04-9a13.8 13.8 0 0 1 2.04-7 13.8 13.8 0 0 1 2.04 7Zm-1.57-5.02A15.8 15.8 0 0 0 7.09 11H4.07a8.03 8.03 0 0 1 4.32-5.02ZM4.07 13h3.02a15.8 15.8 0 0 0 1.3 5.02A8.03 8.03 0 0 1 4.07 13Zm11.54 5.02A15.8 15.8 0 0 0 16.91 13h3.02a8.03 8.03 0 0 1-4.32 5.02Z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <button
-            onClick={onBack}
-            className="mb-8 inline-flex cursor-pointer items-center gap-2 font-bold text-primary transition-all hover:gap-4"
-          >
-            <ArrowLeft size={20} /> Back to Home
-          </button>
-          <h1 className="mb-6 font-headline text-5xl font-extrabold tracking-tight text-white md:text-7xl">
+    <section id="impact-section" className="bg-white px-6 py-20 scroll-mt-8 md:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-16 text-center">
+          <div className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-primary">
+            Impact
+          </div>
+          <h2 className="mb-6 font-headline text-4xl font-extrabold tracking-tight text-secondary md:text-6xl">
             The Data of Human Potential
-          </h1>
-          <p className="text-xl font-light text-slate-300">
+          </h2>
+          <p className="text-lg text-slate-500 md:text-xl">
             Measuring the measurable, and celebrating the immeasurable.
           </p>
         </div>
-      </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-20">
         <div className="mb-24 grid grid-cols-1 gap-12 md:grid-cols-3">
           <div className="rounded-3xl border border-slate-100 bg-slate-50 p-8">
             <BarChart3 className="mb-6 text-primary" size={40} />
@@ -54,9 +36,9 @@ export default function ImpactPage({ onBack }: ImpactPageProps) {
 
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div>
-            <h2 className="mb-8 font-headline text-4xl font-extrabold text-secondary">
+            <h3 className="mb-8 font-headline text-4xl font-extrabold text-secondary">
               Global Reach, Local Impact
-            </h2>
+            </h3>
             <p className="mb-6 text-lg leading-relaxed text-slate-600">
               Our impact framework is built on three pillars: Economic Resilience, Social
               Integration, and Cultural Preservation. We do not just host events; we build
@@ -84,6 +66,6 @@ export default function ImpactPage({ onBack }: ImpactPageProps) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </section>
   );
 }

@@ -1,9 +1,4 @@
-import { motion } from 'motion/react';
-import { ArrowLeft, History } from 'lucide-react';
-
-type LegacyPageProps = {
-  onBack: () => void;
-};
+import { History } from 'lucide-react';
 
 const legacyEvents = [
   {
@@ -23,31 +18,22 @@ const legacyEvents = [
   },
 ];
 
-export default function LegacyPage({ onBack }: LegacyPageProps) {
+export default function LegacySection() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="min-h-screen bg-surface"
-    >
-      <div className="bg-slate-900 px-6 py-24 text-center text-white">
-        <div className="mx-auto max-w-4xl">
-          <button
-            onClick={onBack}
-            className="mb-8 inline-flex cursor-pointer items-center gap-2 font-bold text-primary transition-all hover:gap-4"
-          >
-            <ArrowLeft size={20} /> Back to Home
-          </button>
-          <h1 className="mb-6 font-headline text-5xl font-extrabold tracking-tight text-white md:text-7xl">
+    <section id="legacy-section" className="bg-surface px-6 py-20 scroll-mt-8 md:py-28">
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-16 text-center">
+          <div className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-primary">
+            Legacy
+          </div>
+          <h2 className="mb-6 font-headline text-4xl font-extrabold tracking-tight text-secondary md:text-6xl">
             The Generational Thread
-          </h1>
-          <p className="text-xl font-light italic text-slate-400">
+          </h2>
+          <p className="text-lg italic text-slate-500 md:text-xl">
             "We are the ancestors of the future."
           </p>
         </div>
-      </div>
 
-      <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="relative space-y-20">
           <div className="absolute bottom-0 left-1/2 top-0 hidden w-px bg-slate-200 md:block" />
           {legacyEvents.map((event, index) => (
@@ -88,6 +74,6 @@ export default function LegacyPage({ onBack }: LegacyPageProps) {
           ))}
         </div>
       </div>
-    </motion.div>
+    </section>
   );
 }

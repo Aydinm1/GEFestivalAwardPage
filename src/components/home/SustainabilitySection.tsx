@@ -1,9 +1,4 @@
-import { motion } from 'motion/react';
-import { ArrowLeft, Leaf } from 'lucide-react';
-
-type SustainabilityPageProps = {
-  onBack: () => void;
-};
+import { Leaf } from 'lucide-react';
 
 const commitments = [
   {
@@ -20,31 +15,23 @@ const commitments = [
   },
 ];
 
-export default function SustainabilityPage({ onBack }: SustainabilityPageProps) {
+export default function SustainabilitySection() {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen bg-white">
-      <div className="relative overflow-hidden bg-emerald-900 px-6 py-24 text-center text-white">
-        <div className="pointer-events-none absolute inset-0 opacity-10">
-          <Leaf className="h-full w-full scale-125" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <button
-            onClick={onBack}
-            className="mb-8 inline-flex cursor-pointer items-center gap-2 font-bold text-emerald-400 transition-all hover:gap-4"
-          >
-            <ArrowLeft size={20} /> Back to Home
-          </button>
-          <h1 className="mb-6 font-headline text-5xl font-extrabold tracking-tight text-white md:text-7xl">
+    <section id="sustainability-section" className="bg-white px-6 py-20 scroll-mt-8 md:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-16 text-center">
+          <div className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-emerald-600">
+            Sustainability
+          </div>
+          <h2 className="mb-6 font-headline text-4xl font-extrabold tracking-tight text-secondary md:text-6xl">
             The Zero-Waste Roadmap
-          </h1>
-          <p className="text-xl font-light text-emerald-100">
+          </h2>
+          <p className="text-lg text-slate-500 md:text-xl">
             Stewardship of the earth as a cultural imperative.
           </p>
         </div>
-      </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-32 grid grid-cols-1 items-center gap-20 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-center gap-20 md:grid-cols-2">
           <div className="aspect-square overflow-hidden rounded-[3rem]">
             <img
               src="https://picsum.photos/seed/nature/1000/1000"
@@ -54,9 +41,9 @@ export default function SustainabilityPage({ onBack }: SustainabilityPageProps) 
             />
           </div>
           <div>
-            <h2 className="mb-8 font-headline text-4xl font-extrabold text-secondary">
+            <h3 className="mb-8 font-headline text-4xl font-extrabold text-secondary">
               Our 2025 Commitments
-            </h2>
+            </h3>
             <div className="space-y-8">
               {commitments.map((item) => (
                 <div key={item.title} className="flex gap-6">
@@ -73,6 +60,6 @@ export default function SustainabilityPage({ onBack }: SustainabilityPageProps) 
           </div>
         </div>
       </div>
-    </motion.div>
+    </section>
   );
 }
