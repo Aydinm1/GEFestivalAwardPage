@@ -21,7 +21,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           playsInline
           preload="auto"
           poster="/impact-image.jpeg"
-          className="absolute min-h-full min-w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[center_92%] scale-[1.04]"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           <source
