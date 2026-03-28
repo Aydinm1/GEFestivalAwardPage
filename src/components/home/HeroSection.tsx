@@ -35,7 +35,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="absolute left-1/2 top-0 z-30 flex -translate-x-1/2 items-center justify-center rounded-b-[2rem] bg-white px-0 shadow-md transition-transform hover:scale-[1.02]"
+        className="absolute left-10 top-0 z-30 flex items-center justify-center rounded-b-xl bg-white px-0 shadow-md transition-transform hover:scale-[1.02] md:left-20"
       >
         <img
           src="/logo.png"
