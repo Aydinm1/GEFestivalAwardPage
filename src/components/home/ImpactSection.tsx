@@ -7,6 +7,9 @@ type ImpactStory = {
   eyebrow: string;
   title: string;
   description: string;
+  sectionClass: string;
+  ambientLeftClass: string;
+  ambientRightClass: string;
   imageSrc: string;
   fallbackSrc: string;
   glowClass: string;
@@ -24,6 +27,9 @@ const impactStories: ImpactStory[] = [
     title: 'Redefining Unity Through Excellence.',
     description:
       'Global Encounters is more than a festival; it is a biennial commitment to the elevation of the human spirit. Our mission is to bridge geographic and socio-economic divides by creating a platform where elite talent meets grassroots impact.',
+    sectionClass: 'bg-primary',
+    ambientLeftClass: 'bg-guide-light-blue/34',
+    ambientRightClass: 'bg-guide-yellow/16',
     imageSrc: '/impact-image.jpeg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDk8ZIzKYL_1frPuMJq9AiU0XY1_p_8lGJJcTv1UUu5ph04qPCN9nvzDXwkxe4hPVkp2xt9amLdr1Ol72ZfiUZUJF5whDC002Rao8oQmU_wcnjsKuT89y-dw_v60WbcuP2FyfyjKVs_Jhs-ptqAVpDK2czBFcGn6YOmt0to5lVGD5w6m6H35LvkKZm92Qo6hXTQLS7A4RllcfRqdR65pOwmPwh6JKM03MFjfi6OHzap2v7vUlRNuFqw8FOGlNmFWD4iT-p0pp9BzCXe',
@@ -46,6 +52,9 @@ const impactStories: ImpactStory[] = [
     title: 'Creative Dialogue Across Every Border.',
     description:
       'Residencies, live showcases, and shared learning spaces are designed to make cross-cultural collaboration visible, immediate, and memorable for every audience segment.',
+    sectionClass: 'bg-guide-teal',
+    ambientLeftClass: 'bg-guide-light-blue/28',
+    ambientRightClass: 'bg-primary/18',
     imageSrc: '/gallery-2.jpg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDOm1aw4D9QDoqDMitMjql0fLZKUTpzCG4G1e9G4lSqHGHHbFvN1KqYuTE9Vt8DMmTl7_0ZQ0PSZUVxIO76eS4rnlAezS8Sgi6vMxAqe-9z611f9ByzUfxeRUxsbMbHXAG-v6j0a0gdkuBmGqpUJllIrm79O6JjywRxq_zZh-oIAylgNjeoS4Umh8KtYn9aeKc44_htk7qk6VKxNpKfwX23i6_GcNM615XvGGZR7FSrrGEag2-V-BiZzWfXz9bV8knCknCmiQ9_vfmp',
@@ -68,12 +77,15 @@ const impactStories: ImpactStory[] = [
     title: 'Investment That Extends Beyond The Event.',
     description:
       'The program architecture channels festival attention into measurable community outcomes, from micro-enterprise support to health and education partnerships that continue after the closing ceremony.',
+    sectionClass: 'bg-guide-gold',
+    ambientLeftClass: 'bg-guide-yellow/26',
+    ambientRightClass: 'bg-guide-magenta/16',
     imageSrc: '/gallery-3.jpeg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCgS2YSrysUHbpnIvN31aIjgkbyqj1J9biRBmMNgrliX5eIAUCuJyCup1Nn0nT3W42G0kjWPD5Ga3k2hk1MkSasc8PVcwMc8Qr-zoA2VV0Ikgodyt7tzwXhdKDokttPdV9hL_U5YD6GjBWECuS-oMxRBf_iDZ9pD20UdPIP_SDqE8ajxpsOH25H_PzuYBSmhU7AVrXADdgzRvXUL47YvV8fS_Bs2zGuAx31AExmd-EAvDr_H2fVzhz0pyWH0W15l4bOhDB2li7CH4hq',
     glowClass: 'bg-guide-gold/25',
-    badgeClass: 'border-guide-gold/30 bg-guide-gold/20 text-amber-100',
-    headingClass: 'text-guide-gold',
+    badgeClass: 'border-secondary/25 bg-secondary/20 text-white',
+    headingClass: 'text-secondary',
     points: [
       {
         title: 'Local Enterprise',
@@ -90,6 +102,9 @@ const impactStories: ImpactStory[] = [
     title: 'Next-Generation Leadership In Motion.',
     description:
       'Youth athletes, students, and emerging leaders are given high-visibility platforms that combine mentorship, performance, and direct access to international networks.',
+    sectionClass: 'bg-guide-magenta',
+    ambientLeftClass: 'bg-guide-purple/30',
+    ambientRightClass: 'bg-primary/18',
     imageSrc: '/gallery-4.jpg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuD9yN7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7',
@@ -122,7 +137,19 @@ export default function ImpactSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-secondary px-6 py-20 text-white md:py-32">
+    <section
+      className={`relative overflow-hidden px-6 py-20 text-white transition-colors duration-700 md:py-32 ${story.sectionClass}`}
+    >
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className={`absolute -left-16 top-[-10%] h-80 w-80 rounded-full blur-3xl transition-colors duration-700 md:h-[30rem] md:w-[30rem] ${story.ambientLeftClass}`}
+        />
+        <div
+          className={`absolute -right-10 bottom-[-15%] h-80 w-80 rounded-full blur-3xl transition-colors duration-700 md:h-[32rem] md:w-[32rem] ${story.ambientRightClass}`}
+        />
+        <div className="absolute inset-x-[16%] top-0 hidden h-full w-20 -skew-x-12 bg-white/6 md:block" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(0,0,0,0.28))]" />
+      </div>
       <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 opacity-10 md:block">
         <svg className="h-full w-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,200 Q100,0 200,200 T400,200" fill="none" stroke="white" strokeWidth="2" />
@@ -131,14 +158,14 @@ export default function ImpactSection() {
       <button
         onClick={goToPreviousStory}
         aria-label="Previous story"
-        className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-secondary/70 text-white backdrop-blur-md transition-all hover:border-guide-light-blue hover:bg-guide-light-blue/20 md:left-6 md:h-14 md:w-14"
+        className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-secondary/55 text-white backdrop-blur-md transition-all hover:border-white/40 hover:bg-secondary/70 md:left-6 md:h-14 md:w-14"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={goToNextStory}
         aria-label="Next story"
-        className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-secondary/70 text-white backdrop-blur-md transition-all hover:border-guide-yellow hover:bg-guide-yellow/20 md:right-6 md:h-14 md:w-14"
+        className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-secondary/55 text-white backdrop-blur-md transition-all hover:border-white/40 hover:bg-secondary/70 md:right-6 md:h-14 md:w-14"
       >
         <ChevronRight size={24} />
       </button>
@@ -189,10 +216,10 @@ export default function ImpactSection() {
               className="space-y-8 md:space-y-10"
             >
               <div>
-                <h2 className="font-headline text-3xl font-extrabold leading-[1.1] tracking-tight md:text-6xl">
+                <h2 className="font-headline text-3xl font-extrabold leading-[1.1] tracking-tight drop-shadow-[0_12px_24px_rgba(0,0,0,0.16)] md:text-6xl">
                   {story.title}
                 </h2>
-                <p className="mt-6 text-lg font-light leading-relaxed text-slate-300 md:text-xl">
+                <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-white/88 md:text-xl">
                   {story.description}
                 </p>
               </div>
@@ -200,7 +227,7 @@ export default function ImpactSection() {
                 {story.points.map((point) => (
                   <div key={point.title}>
                     <h4 className={`mb-2 text-lg font-bold ${story.headingClass}`}>{point.title}</h4>
-                    <p className="text-sm text-slate-400">{point.description}</p>
+                    <p className="text-sm leading-relaxed text-white/76">{point.description}</p>
                   </div>
                 ))}
               </div>
