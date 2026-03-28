@@ -33,7 +33,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent" />
       </div>
 
-      <div className="absolute left-6 right-6 top-6 z-20 flex justify-center md:justify-start">
+      <div className="absolute left-6 right-6 top-6 z-20 flex flex-col items-center justify-between gap-6 md:flex-row">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="group flex items-center gap-4 rounded-[1.75rem] border border-white/25 bg-white/12 px-4 py-3 text-left backdrop-blur-xl shadow-[0_24px_80px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02]"
@@ -50,6 +50,17 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             Global Encounters Festival
           </div>
         </button>
+        <div className="flex flex-wrap items-center justify-center gap-3 md:justify-end">
+          {heroLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => onNavigate(link.id)}
+              className="rounded-full border border-white/25 bg-white/12 px-6 py-3 font-headline text-sm font-bold uppercase tracking-[0.22em] text-white backdrop-blur-md transition-all hover:border-primary hover:bg-primary hover:shadow-[0_20px_40px_rgba(35,118,188,0.35)]"
+            >
+              {link.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <motion.div
@@ -68,22 +79,6 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         <p className="mx-auto max-w-2xl text-xl font-light leading-relaxed text-slate-200 md:text-2xl">
           Where culture, sports, and knowledge converge to create unprecedented social impact.
         </p>
-        <div className="mt-12 flex flex-col items-center gap-4">
-          <div className="text-xs font-bold uppercase tracking-[0.35em] text-slate-300">
-            Explore The Story
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {heroLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => onNavigate(link.id)}
-                className="rounded-full border border-white/25 bg-white/12 px-6 py-3 font-headline text-sm font-bold uppercase tracking-[0.22em] text-white backdrop-blur-md transition-all hover:border-primary hover:bg-primary hover:shadow-[0_20px_40px_rgba(35,118,188,0.35)]"
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-        </div>
       </motion.div>
     </section>
   );
