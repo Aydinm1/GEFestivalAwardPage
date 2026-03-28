@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 
+import HomePage from './components/home/HomePage.tsx';
 import Footer from './components/layout/Footer.tsx';
-import HomePage from './pages/HomePage.tsx';
 
 export default function App() {
   const scrollToSection = (sectionId: string) => {
