@@ -3,9 +3,9 @@ import { motion } from 'motion/react';
 const overviewContent = {
   heading: 'A Meeting Place For Culture, Competition, And Shared Progress.',
   body:
-    'Global Encounters Festival is designed as a living platform where artists, athletes, educators, innovators, and communities come together with purpose. Every program is shaped to create memorable experiences while generating practical social, cultural, and economic value that continues long after the event itself.',
-  quoteBy: 'Quote Speaker Name',
-  quoteRole: 'Title or Organization',
+    'To fulfill our potential as creatives or athletes is to realise a blessing. Sport and the arts are not only beautiful, they have a unique power to build bridges. Strangers who might not speak each other’s language can still come together to enjoy the same game of cricket or football and feel exactly the same passions. The poetry of great basketball, or volleyball, or wrestling is identical, whatever land you are from. And people who have different perspectives on almost everything can still fall under the same spell when they hear great music or see a beautiful piece of art.',
+  quoteBy: 'His Highness Prince Rahim Aga Khan V',
+  quoteRole: 'Opening Ceremony - Global Encounters Festival 2025',
 };
 
 export default function OverviewSection() {
@@ -20,9 +20,9 @@ export default function OverviewSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.55, ease: 'easeOut' }}
-        className="relative mx-auto max-w-6xl"
+        className="relative mx-auto max-w-7xl"
       >
-        <div className="relative grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+        <div className="relative grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12">
           <div className="flex items-center">
             <h2 className="mx-auto max-w-xl text-center font-headline text-2xl font-extrabold leading-[1.08] tracking-tight text-purple-950 md:text-4xl">
               {overviewContent.heading}
