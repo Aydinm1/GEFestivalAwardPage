@@ -29,8 +29,8 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             type="video/mp4"
           />
         </video>
-        <div className="absolute inset-0 bg-secondary/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-secondary/48" />
+        <div className="absolute inset-0 bg-gradient-to-t from-secondary/82 via-secondary/20 to-transparent" />
       </div>
 
       <button
