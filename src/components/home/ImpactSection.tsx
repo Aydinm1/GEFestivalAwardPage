@@ -7,6 +7,7 @@ type ImpactStoryTheme = {
   sectionClass: string;
   ambientLeftClass: string;
   ambientRightClass: string;
+  arrowButtonClass: string;
 };
 
 type ImpactStorySlide = ImpactStoryTheme & ImpactStory;
@@ -20,6 +21,7 @@ const impactStories: ImpactStorySlide[] = [
     sectionClass: 'bg-primary',
     ambientLeftClass: 'bg-guide-light-blue/34',
     ambientRightClass: 'bg-secondary/18',
+    arrowButtonClass: 'bg-primary/55 hover:bg-primary/72',
     imageSrc: '/impact-image.jpeg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDk8ZIzKYL_1frPuMJq9AiU0XY1_p_8lGJJcTv1UUu5ph04qPCN9nvzDXwkxe4hPVkp2xt9amLdr1Ol72ZfiUZUJF5whDC002Rao8oQmU_wcnjsKuT89y-dw_v60WbcuP2FyfyjKVs_Jhs-ptqAVpDK2czBFcGn6YOmt0to5lVGD5w6m6H35LvkKZm92Qo6hXTQLS7A4RllcfRqdR65pOwmPwh6JKM03MFjfi6OHzap2v7vUlRNuFqw8FOGlNmFWD4iT-p0pp9BzCXe',
@@ -44,6 +46,7 @@ const impactStories: ImpactStorySlide[] = [
     sectionClass: 'bg-guide-teal',
     ambientLeftClass: 'bg-guide-light-blue/28',
     ambientRightClass: 'bg-primary/18',
+    arrowButtonClass: 'bg-guide-teal/55 hover:bg-guide-teal/72',
     imageSrc: '/gallery-2.jpg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDOm1aw4D9QDoqDMitMjql0fLZKUTpzCG4G1e9G4lSqHGHHbFvN1KqYuTE9Vt8DMmTl7_0ZQ0PSZUVxIO76eS4rnlAezS8Sgi6vMxAqe-9z611f9ByzUfxeRUxsbMbHXAG-v6j0a0gdkuBmGqpUJllIrm79O6JjywRxq_zZh-oIAylgNjeoS4Umh8KtYn9aeKc44_htk7qk6VKxNpKfwX23i6_GcNM615XvGGZR7FSrrGEag2-V-BiZzWfXz9bV8knCknCmiQ9_vfmp',
@@ -68,6 +71,7 @@ const impactStories: ImpactStorySlide[] = [
     sectionClass: 'bg-[#ae8850]',
     ambientLeftClass: 'bg-guide-yellow/18',
     ambientRightClass: 'bg-secondary/14',
+    arrowButtonClass: 'bg-[#ae8850]/60 hover:bg-[#ae8850]/78',
     imageSrc: '/gallery-3.jpeg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCgS2YSrysUHbpnIvN31aIjgkbyqj1J9biRBmMNgrliX5eIAUCuJyCup1Nn0nT3W42G0kjWPD5Ga3k2hk1MkSasc8PVcwMc8Qr-zoA2VV0Ikgodyt7tzwXhdKDokttPdV9hL_U5YD6GjBWECuS-oMxRBf_iDZ9pD20UdPIP_SDqE8ajxpsOH25H_PzuYBSmhU7AVrXADdgzRvXUL47YvV8fS_Bs2zGuAx31AExmd-EAvDr_H2fVzhz0pyWH0W15l4bOhDB2li7CH4hq',
@@ -92,6 +96,7 @@ const impactStories: ImpactStorySlide[] = [
     sectionClass: 'bg-[#b43f7d]',
     ambientLeftClass: 'bg-guide-purple/22',
     ambientRightClass: 'bg-primary/14',
+    arrowButtonClass: 'bg-[#b43f7d]/60 hover:bg-[#b43f7d]/78',
     imageSrc: '/gallery-4.jpg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuD9yN7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7',
@@ -144,14 +149,14 @@ export default function ImpactSection() {
       <button
         onClick={goToPreviousStory}
         aria-label="Previous story"
-        className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-secondary/55 text-white backdrop-blur-md transition-all hover:border-white/40 hover:bg-secondary/70 md:left-6 md:h-14 md:w-14"
+        className={`absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white backdrop-blur-md transition-all hover:border-white/40 md:left-6 md:h-14 md:w-14 ${story.arrowButtonClass}`}
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={goToNextStory}
         aria-label="Next story"
-        className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-secondary/55 text-white backdrop-blur-md transition-all hover:border-white/40 hover:bg-secondary/70 md:right-6 md:h-14 md:w-14"
+        className={`absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white backdrop-blur-md transition-all hover:border-white/40 md:right-6 md:h-14 md:w-14 ${story.arrowButtonClass}`}
       >
         <ChevronRight size={24} />
       </button>
