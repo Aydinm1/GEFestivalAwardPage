@@ -110,7 +110,12 @@ export default function DimensionsSection() {
         <div className="mb-16 flex justify-center md:mb-20">
           <div className="max-w-2xl text-center">
             <h2 className="mb-6 font-headline text-4xl font-black uppercase leading-none tracking-tight text-secondary md:text-6xl">
-              THE GE FESTIVAL <br /> <span className="text-3xl text-guide-magenta md:text-5xl"><span className="font-normal">BY THE</span> NUMBERS</span>
+              <span className="block text-[1em] font-black tracking-tight text-secondary">
+                The GE Festival
+              </span>
+              <span className="mt-3 block text-[0.74em] tracking-[0.02em] text-guide-magenta md:mt-4">
+                <span className="font-normal">By The</span> Numbers
+              </span>
             </h2>
             <p className="text-base leading-relaxed text-slate-500 md:text-lg">
               A meticulously curated ecosystem designed to foster elite performance, cultural
