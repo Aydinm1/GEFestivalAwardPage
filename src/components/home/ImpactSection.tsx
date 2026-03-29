@@ -76,7 +76,7 @@ const impactStories: ImpactStorySlide[] = [
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCgS2YSrysUHbpnIvN31aIjgkbyqj1J9biRBmMNgrliX5eIAUCuJyCup1Nn0nT3W42G0kjWPD5Ga3k2hk1MkSasc8PVcwMc8Qr-zoA2VV0Ikgodyt7tzwXhdKDokttPdV9hL_U5YD6GjBWECuS-oMxRBf_iDZ9pD20UdPIP_SDqE8ajxpsOH25H_PzuYBSmhU7AVrXADdgzRvXUL47YvV8fS_Bs2zGuAx31AExmd-EAvDr_H2fVzhz0pyWH0W15l4bOhDB2li7CH4hq',
     glowClass: 'bg-guide-gold/18',
-    badgeClass: 'border-secondary/25 bg-secondary/20 text-white',
+    badgeClass: 'border-white/24 bg-white/12 text-white',
     points: [
       {
         title: 'Local Enterprise',
@@ -101,7 +101,7 @@ const impactStories: ImpactStorySlide[] = [
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuD9yN7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7',
     glowClass: 'bg-guide-magenta/18',
-    badgeClass: 'border-guide-magenta/30 bg-guide-magenta/20 text-pink-100',
+    badgeClass: 'border-white/24 bg-white/12 text-white',
     points: [
       {
         title: 'Youth Access',
