@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 type Dimension = {
-  icon: LucideIcon;
+  icon: LucideIcon | string;
   value: string;
   label: string;
   description: string;
@@ -21,7 +21,7 @@ type Dimension = {
 
 const dimensions: Dimension[] = [
   {
-    icon: Lightbulb,
+    icon: '/icon-athlete.png',
     value: '3700+',
     label: 'Artists & Athletes',
     description: 'International symposiums and knowledge-sharing workshops.',
@@ -82,9 +82,19 @@ function DimensionItem({ icon: Icon, value, label, description, colorClass }: Di
   return (
     <motion.div whileHover={{ y: -5 }} className="flex flex-col items-center text-center">
       <div className={`${colorClass} mb-6 flex items-center justify-center`}>
-        <Icon className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
+        {typeof Icon === 'string' ? (
+          <img
+            src={Icon}
+            alt={label}
+            className="h-[104px] w-[104px] rounded-full border-[0.25px] border-slate-200 bg-white shadow-md object-contain md:h-[125px] md:w-[125px]"
+          />
+        ) : (
+          <Icon className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
+        )}
       </div>
-      <div className="mb-2 font-headline text-4xl font-black text-secondary">{value}</div>
+      <div className="mb-2 font-headline text-4xl font-black text-secondary [-webkit-text-stroke:1px_currentColor] md:text-5xl md:[-webkit-text-stroke:1.5px_currentColor]">
+        {value}
+      </div>
       <div className="mb-4 text-sm font-bold uppercase tracking-widest text-primary">{label}</div>
       <p className="text-sm font-medium leading-relaxed text-slate-500">{description}</p>
     </motion.div>
