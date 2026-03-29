@@ -35,7 +35,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="absolute left-10 top-0 z-30 flex items-center justify-center rounded-b-xl bg-white px-0 shadow-md transition-transform hover:scale-[1.02] md:left-20"
+        className="absolute left-10 top-0 z-30 flex items-center justify-center rounded-b-xl bg-transparent px-0 transition-transform hover:scale-[1.02] md:left-20"
       >
         <img
           src="/logo.png"
@@ -63,12 +63,9 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-5xl px-6 pt-80 text-center md:pt-64"
       >
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-sm">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-          Celebrating A Legacy of Excellence
-        </div>
-        <h1 className="mb-8 font-headline text-5xl font-extrabold leading-[1.1] tracking-tight text-white md:text-8xl">
-          The Global Stage for <span className="text-primary">Human Potential</span>
+        <h1 className="mb-8 font-headline text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          Unforgettable Encounters <br />
+          <span className="text-3xl text-guide-yellow sm:text-4xl md:text-5xl lg:text-6xl">That Light the Human Spirit</span>
         </h1>
         <p className="mx-auto max-w-2xl text-xl font-light leading-relaxed text-slate-200 md:text-2xl">
           Where culture, sports, and knowledge converge to create unprecedented social impact.
