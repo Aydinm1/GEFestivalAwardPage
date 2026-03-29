@@ -1,6 +1,6 @@
-import { History } from 'lucide-react';
+import LegacyTimelineItem, { type LegacyEvent } from './LegacyTimelineItem.tsx';
 
-const legacyEvents = [
+const legacyEvents: LegacyEvent[] = [
   {
     year: '1982',
     title: 'The First Gathering',
@@ -37,39 +37,8 @@ export default function LegacySection() {
         <div className="relative space-y-20">
           <div className="absolute bottom-0 left-1/2 top-0 hidden w-px bg-slate-200 md:block" />
           {legacyEvents.map((event, index) => (
-            <div
-              key={event.year}
-              className={`flex flex-col items-center gap-12 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'} md:flex-row`}
-            >
-              <div className="flex-1 text-center md:text-right">
-                {index % 2 === 0 ? (
-                  <>
-                    <span className="mb-4 block font-headline text-5xl font-black text-primary">
-                      {event.year}
-                    </span>
-                    <h3 className="mb-4 text-2xl font-bold text-secondary">{event.title}</h3>
-                    <p className="leading-relaxed text-slate-500">{event.desc}</p>
-                  </>
-                ) : (
-                  <div className="hidden md:block" />
-                )}
-              </div>
-              <div className="z-10 hidden h-12 w-12 items-center justify-center rounded-full border-4 border-primary bg-white md:flex">
-                <History size={20} className="text-primary" />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                {index % 2 !== 0 ? (
-                  <>
-                    <span className="mb-4 block font-headline text-5xl font-black text-primary">
-                      {event.year}
-                    </span>
-                    <h3 className="mb-4 text-2xl font-bold text-secondary">{event.title}</h3>
-                    <p className="leading-relaxed text-slate-500">{event.desc}</p>
-                  </>
-                ) : (
-                  <div className="hidden md:block" />
-                )}
-              </div>
+            <div key={event.year}>
+              <LegacyTimelineItem event={event} side={index % 2 === 0 ? 'left' : 'right'} />
             </div>
           ))}
         </div>
