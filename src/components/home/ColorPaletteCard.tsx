@@ -1,5 +1,3 @@
-import { motion } from 'motion/react';
-
 export type ColorPanel = {
   name: string;
   token: string;
@@ -22,16 +20,13 @@ export default function ColorPaletteCard({
   onClick,
 }: ColorPaletteCardProps) {
   return (
-    <motion.button
+    <button
       type="button"
       onClick={onClick}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.45 }}
-      transition={{ duration: 0.45, ease: 'easeOut' }}
-      whileHover={{ y: -6 }}
       className={`group relative aspect-[3/5] overflow-hidden p-0 text-left transition-all duration-300 md:aspect-[5/8] ${panel.bgClass} ${panel.textClass} ${
-        isActive ? 'scale-[1.02] ring-4 ring-secondary/15' : ''
+        isActive
+          ? 'scale-[1.02] shadow-[0_18px_40px_rgba(15,23,42,0.18)]'
+          : 'hover:-translate-y-1'
       }`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(0,0,0,0.16))]" />
@@ -50,6 +45,6 @@ export default function ColorPaletteCard({
           <p className="mt-3 text-sm leading-relaxed opacity-90">{panel.description}</p>
         </div>
       </div>
-    </motion.button>
+    </button>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -85,22 +85,58 @@ const PANELS_PER_PAGE = 4;
 
 export default function ColorAccordionSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [startIndex, setStartIndex] = useState(0);
-  const visiblePanels = Array.from({ length: PANELS_PER_PAGE }, (_, offset) => {
-    const panelIndex = (startIndex + offset) % colorPanels.length;
-
-    return {
-      panel: colorPanels[panelIndex],
-      panelIndex,
-    };
-  });
+  const [currentIndex, setCurrentIndex] = useState(colorPanels.length);
+  const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const isSlidingRef = useRef(false);
+  const duplicatedPanels = [...colorPanels, ...colorPanels, ...colorPanels].map((panel, index) => ({
+    panel,
+    key: `${panel.token}-${index}`,
+    originalIndex: index % colorPanels.length,
+  }));
 
   const showPreviousPage = () => {
-    setStartIndex((current) => (current === 0 ? colorPanels.length - 1 : current - 1));
+    if (isSlidingRef.current) {
+      return;
+    }
+
+    isSlidingRef.current = true;
+    setTransitionEnabled(true);
+    setCurrentIndex((current) => current - 1);
   };
 
   const showNextPage = () => {
-    setStartIndex((current) => (current + 1) % colorPanels.length);
+    if (isSlidingRef.current) {
+      return;
+    }
+
+    isSlidingRef.current = true;
+    setTransitionEnabled(true);
+    setCurrentIndex((current) => current + 1);
+  };
+
+  useEffect(() => {
+    if (transitionEnabled) {
+      return;
+    }
+
+    const frame = requestAnimationFrame(() => {
+      setTransitionEnabled(true);
+      isSlidingRef.current = false;
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [transitionEnabled]);
+
+  const handleTrackTransitionEnd = () => {
+    if (currentIndex === colorPanels.length * 2) {
+      setTransitionEnabled(false);
+      setCurrentIndex(colorPanels.length);
+    } else if (currentIndex === colorPanels.length - 1) {
+      setTransitionEnabled(false);
+      setCurrentIndex(colorPanels.length * 2 - 1);
+    } else {
+      isSlidingRef.current = false;
+    }
   };
 
   return (
@@ -134,7 +170,7 @@ export default function ColorAccordionSection() {
         >
           <div className="mb-4 flex justify-center md:hidden">
             <div className="min-w-[4.5rem] text-center text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-              {startIndex + 1} - {((startIndex + PANELS_PER_PAGE - 1) % colorPanels.length) + 1}
+              {(currentIndex % colorPanels.length) + 1} - {((currentIndex + PANELS_PER_PAGE - 1) % colorPanels.length) + 1}
             </div>
           </div>
           <button
@@ -163,7 +199,7 @@ export default function ColorAccordionSection() {
               <ChevronLeft size={20} />
             </button>
             <div className="min-w-[4.5rem] text-center text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-              {startIndex + 1} - {((startIndex + PANELS_PER_PAGE - 1) % colorPanels.length) + 1}
+              {(currentIndex % colorPanels.length) + 1} - {((currentIndex + PANELS_PER_PAGE - 1) % colorPanels.length) + 1}
             </div>
             <button
               type="button"
@@ -174,22 +210,36 @@ export default function ColorAccordionSection() {
               <ChevronRight size={20} />
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {visiblePanels.map(({ panel, panelIndex }) => {
-              const isActive = activeIndex === panelIndex;
+          <div className="overflow-hidden [--palette-step:calc(50%+0.5rem)] md:[--palette-step:calc(25%+0.25rem)]">
+            <div
+              className="flex gap-4"
+              onTransitionEnd={handleTrackTransitionEnd}
+              style={{
+                transform: `translateX(calc(-${currentIndex} * var(--palette-step)))`,
+                transition: transitionEnabled ? 'transform 280ms ease-out' : 'none',
+              }}
+            >
+              {duplicatedPanels.map(({ panel, key, originalIndex }) => {
+                const isActive = activeIndex === originalIndex;
 
-              return (
-                <div key={panel.token}>
-                  <ColorPaletteCard
-                    panel={panel}
-                    isActive={isActive}
-                    onClick={() =>
-                      setActiveIndex((current) => (current === panelIndex ? null : panelIndex))
-                    }
-                  />
-                </div>
-              );
-            })}
+                return (
+                  <div
+                    key={key}
+                    className="w-[calc(50%-0.5rem)] flex-none md:w-[calc(25%-0.75rem)]"
+                  >
+                    <ColorPaletteCard
+                      panel={panel}
+                      isActive={isActive}
+                      onClick={() =>
+                        setActiveIndex((current) =>
+                          current === originalIndex ? null : originalIndex,
+                        )
+                      }
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </motion.div>
 
