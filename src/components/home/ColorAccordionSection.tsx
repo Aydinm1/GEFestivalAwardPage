@@ -83,6 +83,10 @@ const colorPanels: ColorPanel[] = [
 
 const PANELS_PER_PAGE = 4;
 
+function withAlpha(hex: string, alpha: string) {
+  return `${hex}${alpha}`;
+}
+
 export default function ColorAccordionSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(colorPanels.length);
@@ -244,29 +248,25 @@ export default function ColorAccordionSection() {
         </motion.div>
 
         <div
-          className={`grid transition-[grid-template-rows,opacity,margin] duration-500 ease-out ${
-            activeIndex !== null
-              ? 'mt-8 grid-rows-[1fr] opacity-100 md:mt-10'
-              : 'mt-0 grid-rows-[0fr] opacity-0'
+          className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
+            activeIndex !== null ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
           }`}
         >
-          <div className="overflow-hidden">
-            <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_20px_50px_rgba(15,23,42,0.06)] md:p-8">
+          <div className="overflow-hidden md:px-12">
+            <div
+              className="p-5 pt-6 shadow-[0_20px_50px_rgba(15,23,42,0.06)] md:p-8 md:pt-7"
+              style={
+                activeIndex !== null
+                  ? { backgroundColor: withAlpha(colorPanels[activeIndex].hex, '14') }
+                  : undefined
+              }
+            >
               {activeIndex !== null && (
                 <>
-                  <div className="mb-6 flex flex-col gap-3 md:mb-8 md:flex-row md:items-end md:justify-between">
-                    <div>
-                      <div className="text-sm font-bold uppercase tracking-[0.24em] text-primary">
-                        {colorPanels[activeIndex].name}
-                      </div>
-                      <h3 className="mt-2 font-headline text-3xl font-extrabold tracking-tight text-secondary">
-                        Image Gallery Preview
-                      </h3>
-                    </div>
-                    <p className="max-w-2xl text-sm leading-relaxed text-slate-500 md:text-base">
-                      This currently opens the existing four gallery images regardless of which
-                      palette card is selected.
-                    </p>
+                  <div className="mb-6 md:mb-8">
+                    <h3 className="font-headline text-3xl font-extrabold tracking-tight text-secondary">
+                      {colorPanels[activeIndex].name}
+                    </h3>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
