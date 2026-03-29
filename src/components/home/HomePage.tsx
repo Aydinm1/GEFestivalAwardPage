@@ -1,3 +1,4 @@
+import ColorAccordionSection from './ColorAccordionSection.tsx';
 import DimensionsSection from './DimensionsSection.tsx';
 import GallerySection from './GallerySection.tsx';
 import HeroSection from './HeroSection.tsx';
@@ -24,6 +25,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <SustainabilitySection />
       <TestimonialsSection />
       <GallerySection />
+      <ColorAccordionSection />
     </>
   );
 }
