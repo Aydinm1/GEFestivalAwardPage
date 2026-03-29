@@ -10,7 +10,7 @@ const overviewContent = {
 
 export default function OverviewSection() {
   return (
-    <section className="relative overflow-hidden bg-surface px-6 py-14 md:py-16">
+    <section className="relative overflow-hidden bg-white px-6 py-14 md:py-16">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-8 h-56 w-56 rounded-full bg-guide-light-blue/10 blur-3xl" />
         <div className="absolute right-0 top-1/3 h-64 w-64 rounded-full bg-guide-yellow/10 blur-3xl" />
