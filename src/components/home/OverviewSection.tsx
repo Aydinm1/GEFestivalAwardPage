@@ -13,7 +13,7 @@ export default function OverviewSection() {
     <section className="relative overflow-hidden bg-white px-6 py-14 md:py-16">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-8 h-56 w-56 rounded-full bg-guide-light-blue/10 blur-3xl" />
-        <div className="absolute right-0 top-1/3 h-64 w-64 rounded-full bg-guide-yellow/10 blur-3xl" />
+        <div className="absolute right-0 top-1/3 h-64 w-64 rounded-full bg-primary/8 blur-3xl" />
       </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -31,7 +31,7 @@ export default function OverviewSection() {
           </div>
 
           <div className="relative">
-            <div className="absolute left-0 top-0 hidden h-full w-1.5 rounded-full bg-gradient-to-b from-primary via-guide-light-blue to-guide-yellow lg:block" />
+            <div className="absolute left-0 top-0 hidden h-full w-1.5 rounded-full bg-gradient-to-b from-secondary via-primary to-guide-light-blue lg:block" />
             <div className="lg:pl-8">
               <blockquote className="space-y-6">
                 <p className="text-base leading-7 text-slate-600 md:text-[1.15rem] md:leading-8">
