@@ -65,13 +65,13 @@ const impactStories: ImpactStorySlide[] = [
     title: 'Investment That Extends Beyond The Event.',
     description:
       'The program architecture channels festival attention into measurable community outcomes, from micro-enterprise support to health and education partnerships that continue after the closing ceremony.',
-    sectionClass: 'bg-guide-gold',
-    ambientLeftClass: 'bg-guide-yellow/26',
-    ambientRightClass: 'bg-guide-magenta/16',
+    sectionClass: 'bg-[#ae8850]',
+    ambientLeftClass: 'bg-guide-yellow/18',
+    ambientRightClass: 'bg-secondary/14',
     imageSrc: '/gallery-3.jpeg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCgS2YSrysUHbpnIvN31aIjgkbyqj1J9biRBmMNgrliX5eIAUCuJyCup1Nn0nT3W42G0kjWPD5Ga3k2hk1MkSasc8PVcwMc8Qr-zoA2VV0Ikgodyt7tzwXhdKDokttPdV9hL_U5YD6GjBWECuS-oMxRBf_iDZ9pD20UdPIP_SDqE8ajxpsOH25H_PzuYBSmhU7AVrXADdgzRvXUL47YvV8fS_Bs2zGuAx31AExmd-EAvDr_H2fVzhz0pyWH0W15l4bOhDB2li7CH4hq',
-    glowClass: 'bg-guide-gold/25',
+    glowClass: 'bg-guide-gold/18',
     badgeClass: 'border-secondary/25 bg-secondary/20 text-white',
     points: [
       {
@@ -89,13 +89,13 @@ const impactStories: ImpactStorySlide[] = [
     title: 'Next-Generation Leadership In Motion.',
     description:
       'Youth athletes, students, and emerging leaders are given high-visibility platforms that combine mentorship, performance, and direct access to international networks.',
-    sectionClass: 'bg-guide-magenta',
-    ambientLeftClass: 'bg-guide-purple/30',
-    ambientRightClass: 'bg-primary/18',
+    sectionClass: 'bg-[#b43f7d]',
+    ambientLeftClass: 'bg-guide-purple/22',
+    ambientRightClass: 'bg-primary/14',
     imageSrc: '/gallery-4.jpg',
     fallbackSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuD9yN7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7',
-    glowClass: 'bg-guide-magenta/25',
+    glowClass: 'bg-guide-magenta/18',
     badgeClass: 'border-guide-magenta/30 bg-guide-magenta/20 text-pink-100',
     points: [
       {
