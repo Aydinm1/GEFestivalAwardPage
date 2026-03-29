@@ -81,7 +81,7 @@ export default function GallerySection() {
       <div className="mx-auto mb-12 flex max-w-7xl flex-col items-start justify-between gap-8 px-6 md:mb-16 md:flex-row md:items-end">
         <div>
           <h2 className="font-headline text-4xl font-extrabold leading-tight tracking-tight text-secondary md:text-5xl">
-            The Visual Narrative
+            The Picture Section
           </h2>
           <p className="mt-4 text-base text-slate-500 md:text-lg">
             Capturing the human connection through high-resolution candid photography of festival

@@ -93,7 +93,7 @@ function DimensionItem({ icon: Icon, value, label, description, colorClass }: Di
 
 export default function DimensionsSection() {
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-20 md:py-32">
+    <section className="relative overflow-hidden border-t border-slate-200 bg-white px-6 py-20 md:py-32">
       <div className="pointer-events-none absolute inset-0 grid grid-rows-4 opacity-[0.018] mix-blend-multiply">
         {Array.from({ length: 4 }).map((_, index) => (
           <div key={index} className="overflow-hidden">

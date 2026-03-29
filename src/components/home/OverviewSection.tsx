@@ -10,7 +10,7 @@ const overviewContent = {
 
 export default function OverviewSection() {
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-14 md:py-16">
+    <section className="relative overflow-hidden bg-[#FCFBF8] px-6 py-[6.25rem] md:py-[7.5rem]">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-8 h-56 w-56 rounded-full bg-guide-light-blue/10 blur-3xl" />
         <div className="absolute right-0 top-1/3 h-64 w-64 rounded-full bg-primary/8 blur-3xl" />
@@ -22,10 +22,9 @@ export default function OverviewSection() {
         transition={{ duration: 0.55, ease: 'easeOut' }}
         className="relative mx-auto max-w-6xl"
       >
-        <div className="pointer-events-none absolute inset-y-0 left-[46%] hidden w-px bg-slate-200/80 lg:block" />
         <div className="relative grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           <div className="flex items-center">
-            <h2 className="mx-auto max-w-xl text-center font-headline text-2xl font-extrabold leading-[1.08] tracking-tight text-secondary md:text-4xl">
+            <h2 className="mx-auto max-w-xl text-center font-headline text-2xl font-extrabold leading-[1.08] tracking-tight text-purple-950 md:text-4xl">
               {overviewContent.heading}
             </h2>
           </div>
