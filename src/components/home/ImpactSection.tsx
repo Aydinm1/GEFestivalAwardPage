@@ -19,8 +19,8 @@ const impactStories: ImpactStorySlide[] = [
     description:
       'Global Encounters is more than a festival; it is a biennial commitment to the elevation of the human spirit. Our mission is to bridge geographic and socio-economic divides by creating a platform where elite talent meets grassroots impact.',
     sectionClass: 'bg-primary',
-    ambientLeftClass: 'bg-guide-light-blue/34',
-    ambientRightClass: 'bg-secondary/18',
+    ambientLeftClass: 'bg-guide-light-blue/18',
+    ambientRightClass: 'bg-secondary/10',
     arrowButtonClass: 'bg-primary/55 hover:bg-primary/72',
     imageSrc: '/impact-image.jpeg',
     fallbackSrc:
@@ -44,8 +44,8 @@ const impactStories: ImpactStorySlide[] = [
     description:
       'Residencies, live showcases, and shared learning spaces are designed to make cross-cultural collaboration visible, immediate, and memorable for every audience segment.',
     sectionClass: 'bg-guide-teal',
-    ambientLeftClass: 'bg-guide-light-blue/28',
-    ambientRightClass: 'bg-primary/18',
+    ambientLeftClass: 'bg-guide-light-blue/16',
+    ambientRightClass: 'bg-primary/10',
     arrowButtonClass: 'bg-guide-teal/55 hover:bg-guide-teal/72',
     imageSrc: '/gallery-2.jpg',
     fallbackSrc:
@@ -69,8 +69,8 @@ const impactStories: ImpactStorySlide[] = [
     description:
       'The program architecture channels festival attention into measurable community outcomes, from micro-enterprise support to health and education partnerships that continue after the closing ceremony.',
     sectionClass: 'bg-[#ae8850]',
-    ambientLeftClass: 'bg-guide-yellow/18',
-    ambientRightClass: 'bg-secondary/14',
+    ambientLeftClass: 'bg-guide-yellow/12',
+    ambientRightClass: 'bg-secondary/10',
     arrowButtonClass: 'bg-[#ae8850]/60 hover:bg-[#ae8850]/78',
     imageSrc: '/gallery-3.jpeg',
     fallbackSrc:
@@ -94,8 +94,8 @@ const impactStories: ImpactStorySlide[] = [
     description:
       'Youth athletes, students, and emerging leaders are given high-visibility platforms that combine mentorship, performance, and direct access to international networks.',
     sectionClass: 'bg-[#b43f7d]',
-    ambientLeftClass: 'bg-guide-purple/22',
-    ambientRightClass: 'bg-primary/14',
+    ambientLeftClass: 'bg-guide-purple/14',
+    ambientRightClass: 'bg-primary/10',
     arrowButtonClass: 'bg-[#b43f7d]/60 hover:bg-[#b43f7d]/78',
     imageSrc: '/gallery-4.jpg',
     fallbackSrc:
@@ -133,10 +133,10 @@ export default function ImpactSection() {
     >
       <div className="pointer-events-none absolute inset-0">
         <div
-          className={`absolute -left-16 top-[-10%] h-80 w-80 rounded-full blur-3xl transition-colors duration-700 md:h-[30rem] md:w-[30rem] ${story.ambientLeftClass}`}
+          className={`absolute -left-20 top-[-8%] h-96 w-96 rounded-full opacity-75 blur-[120px] transition-colors duration-700 md:h-[34rem] md:w-[34rem] ${story.ambientLeftClass}`}
         />
         <div
-          className={`absolute -right-10 bottom-[-15%] h-80 w-80 rounded-full blur-3xl transition-colors duration-700 md:h-[32rem] md:w-[32rem] ${story.ambientRightClass}`}
+          className={`absolute -right-16 bottom-[-12%] h-96 w-96 rounded-full opacity-70 blur-[120px] transition-colors duration-700 md:h-[34rem] md:w-[34rem] ${story.ambientRightClass}`}
         />
         <div className="absolute inset-x-[16%] top-0 hidden h-full w-20 -skew-x-12 bg-white/6 md:block" />
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(0,0,0,0.28))]" />
