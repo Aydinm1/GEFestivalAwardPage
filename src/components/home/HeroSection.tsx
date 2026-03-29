@@ -45,17 +45,17 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         />
       </button>
 
-      <div className="absolute left-6 right-6 top-64 z-20 flex flex-wrap items-center justify-center gap-3 md:top-6 md:justify-end">
-          {heroLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => onNavigate(link.id)}
-              className="rounded-full border border-white/25 bg-white/12 px-6 py-3 font-headline text-sm font-bold uppercase tracking-[0.22em] text-white backdrop-blur-md transition-all hover:border-primary hover:bg-primary hover:shadow-[0_20px_40px_rgba(35,118,188,0.35)]"
-            >
-              {link.label}
-            </button>
-          ))}
-        </div>
+      <div className="absolute left-6 right-6 top-64 z-20 flex flex-wrap items-center justify-center gap-6 md:top-10 md:justify-end md:gap-8">
+        {heroLinks.map((link) => (
+          <button
+            key={link.id}
+            onClick={() => onNavigate(link.id)}
+            className="font-headline text-sm font-bold uppercase tracking-[0.22em] text-white transition-colors hover:text-primary"
+          >
+            {link.label}
+          </button>
+        ))}
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -65,11 +65,8 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
       >
         <h1 className="mb-8 font-headline text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
           Unforgettable Encounters <br />
-          <span className="text-3xl text-guide-yellow sm:text-4xl md:text-5xl lg:text-6xl">That Light the Human Spirit</span>
+          <span className="text-3xl font-normal italic text-yellow-200 sm:text-4xl md:text-5xl lg:text-6xl">That Light the Human Spirit</span>
         </h1>
-        <p className="mx-auto max-w-2xl text-xl font-light leading-relaxed text-slate-200 md:text-2xl">
-          Where culture, sports, and knowledge converge to create unprecedented social impact.
-        </p>
       </motion.div>
     </section>
   );
