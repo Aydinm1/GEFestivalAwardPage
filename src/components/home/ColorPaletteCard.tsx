@@ -23,7 +23,7 @@ export default function ColorPaletteCard({
     <button
       type="button"
       onClick={onClick}
-      className={`group relative aspect-[3/5] overflow-hidden rounded-[1.6rem] p-0 text-left transition-all duration-300 md:aspect-[5/8] ${panel.bgClass} ${panel.textClass} ${
+      className={`group relative aspect-[3/5] overflow-hidden p-0 text-left transition-all duration-300 md:aspect-[5/8] ${panel.bgClass} ${panel.textClass} ${
         isActive ? 'scale-[1.02] ring-4 ring-secondary/15' : 'hover:-translate-y-1'
       }`}
     >
