@@ -1,5 +1,9 @@
+import { useState } from 'react';
+
 import { Leaf } from 'lucide-react';
 import { motion } from 'motion/react';
+
+import PhotoLightbox from './PhotoLightbox.tsx';
 
 const commitments = [
   {
@@ -17,6 +21,8 @@ const commitments = [
 ];
 
 export default function SustainabilitySection() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   return (
     <section id="sustainability-section" className="bg-white px-6 py-20 scroll-mt-8 md:py-28">
       <div className="mx-auto max-w-7xl">
@@ -46,12 +52,19 @@ export default function SustainabilitySection() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="aspect-square overflow-hidden rounded-[3rem]"
           >
-            <img
-              src="https://picsum.photos/seed/nature/1000/1000"
-              alt="Sustainability"
-              className="h-full w-full object-cover"
-              referrerPolicy="no-referrer"
-            />
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(0)}
+              className="block h-full w-full cursor-zoom-in"
+              aria-label="Open sustainability image"
+            >
+              <img
+                src="https://picsum.photos/seed/nature/1000/1000"
+                alt="Sustainability"
+                className="h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </button>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 32 }}
@@ -85,6 +98,20 @@ export default function SustainabilitySection() {
           </motion.div>
         </div>
       </div>
+      <PhotoLightbox
+        items={[
+          {
+            src: 'https://picsum.photos/seed/nature/1000/1000',
+            alt: 'Sustainability',
+            title: 'Sustainability',
+            description: 'The Zero-Waste Roadmap',
+          },
+        ]}
+        activeIndex={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onPrevious={() => setLightboxIndex(0)}
+        onNext={() => setLightboxIndex(0)}
+      />
     </section>
   );
 }

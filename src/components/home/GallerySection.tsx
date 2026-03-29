@@ -1,12 +1,14 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 
 import { galleryItems } from './galleryItems.ts';
+import PhotoLightbox from './PhotoLightbox.tsx';
 
 export default function GallerySection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) {
@@ -25,6 +27,14 @@ export default function GallerySection() {
 
     scrollRef.current.scrollTo({ left: nextLeft, behavior: 'smooth' });
   };
+
+  const galleryLightboxItems = galleryItems.map((item) => ({
+    src: item.src,
+    alt: item.alt,
+    title: item.title,
+    description: item.description,
+    fallbackSrc: item.fallbackSrc,
+  }));
 
   return (
     <section className="overflow-hidden bg-slate-50 py-20 md:py-32">
@@ -72,22 +82,44 @@ export default function GallerySection() {
             transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
             className={`relative flex-none w-[80vw] snap-start overflow-hidden rounded-2xl ${item.widthClass} ${item.aspectClass} group`}
           >
-            <img
-              alt={item.alt}
-              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-              src={item.src}
-              onError={(event) => {
-                (event.target as HTMLImageElement).src = item.fallbackSrc;
-              }}
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-secondary/80 to-transparent p-6 opacity-100 transition-opacity group-hover:opacity-100 md:p-8 md:opacity-0">
-              <h4 className="text-lg font-bold text-white md:text-xl">{item.title}</h4>
-              <p className="text-xs text-white/70 md:text-sm">{item.description}</p>
-            </div>
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(index)}
+              className="h-full w-full cursor-zoom-in text-left"
+              aria-label={`Open ${item.title} image`}
+            >
+              <img
+                alt={item.alt}
+                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                src={item.src}
+                onError={(event) => {
+                  (event.target as HTMLImageElement).src = item.fallbackSrc;
+                }}
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-secondary/80 to-transparent p-6 opacity-100 transition-opacity group-hover:opacity-100 md:p-8 md:opacity-0">
+                <h4 className="text-lg font-bold text-white md:text-xl">{item.title}</h4>
+                <p className="text-xs text-white/70 md:text-sm">{item.description}</p>
+              </div>
+            </button>
           </motion.div>
         ))}
       </div>
+      <PhotoLightbox
+        items={galleryLightboxItems}
+        activeIndex={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onPrevious={() =>
+          setLightboxIndex((current) =>
+            current === null ? null : (current - 1 + galleryLightboxItems.length) % galleryLightboxItems.length,
+          )
+        }
+        onNext={() =>
+          setLightboxIndex((current) =>
+            current === null ? null : (current + 1) % galleryLightboxItems.length,
+          )
+        }
+      />
     </section>
   );
 }

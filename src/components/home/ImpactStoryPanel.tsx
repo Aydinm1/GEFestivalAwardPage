@@ -16,9 +16,10 @@ export type ImpactStory = {
 
 type ImpactStoryPanelProps = {
   story: ImpactStory;
+  onImageClick?: () => void;
 };
 
-export default function ImpactStoryPanel({ story }: ImpactStoryPanelProps) {
+export default function ImpactStoryPanel({ story, onImageClick }: ImpactStoryPanelProps) {
   return (
     <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 lg:flex-row lg:gap-24">
       <div className="relative w-full lg:w-1/2">
@@ -32,15 +33,22 @@ export default function ImpactStoryPanel({ story }: ImpactStoryPanelProps) {
             className="group relative"
           >
             <div className={`absolute -inset-4 rounded-2xl blur-3xl transition-all ${story.glowClass}`} />
-            <img
-              alt={story.title}
-              className="shadow-3xl relative aspect-[4/5] w-full rounded-2xl object-cover grayscale-[10%] transition-all duration-1000 hover:grayscale-0"
-              src={story.imageSrc}
-              onError={(event) => {
-                (event.target as HTMLImageElement).src = story.fallbackSrc;
-              }}
-              referrerPolicy="no-referrer"
-            />
+            <button
+              type="button"
+              onClick={onImageClick}
+              className="relative block w-full cursor-zoom-in text-left"
+              aria-label={`Open ${story.title} image`}
+            >
+              <img
+                alt={story.title}
+                className="shadow-3xl relative aspect-[4/5] w-full rounded-2xl object-cover grayscale-[10%] transition-all duration-1000 hover:grayscale-0"
+                src={story.imageSrc}
+                onError={(event) => {
+                  (event.target as HTMLImageElement).src = story.fallbackSrc;
+                }}
+                referrerPolicy="no-referrer"
+              />
+            </button>
           </motion.div>
         </AnimatePresence>
       </div>

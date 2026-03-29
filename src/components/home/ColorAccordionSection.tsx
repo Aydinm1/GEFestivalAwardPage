@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 
 import ColorPaletteCard, { type ColorPanel } from './ColorPaletteCard.tsx';
 import { galleryItems } from './galleryItems.ts';
+import PhotoLightbox from './PhotoLightbox.tsx';
 
 const colorPanels: ColorPanel[] = [
   {
@@ -89,6 +90,7 @@ function withAlpha(hex: string, alpha: string) {
 
 export default function ColorAccordionSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(colorPanels.length);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const isSlidingRef = useRef(false);
@@ -270,10 +272,13 @@ export default function ColorAccordionSection() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-                    {galleryItems.map((item) => (
-                      <div
+                    {galleryItems.map((item, index) => (
+                      <button
+                        type="button"
                         key={item.title}
-                        className="group relative aspect-[4/3] overflow-hidden rounded-[1.25rem] lg:aspect-[3/4]"
+                        onClick={() => setLightboxIndex(index)}
+                        className="group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-[1.25rem] text-left lg:aspect-[3/4]"
+                        aria-label={`Open ${item.title} image`}
                       >
                         <img
                           alt={item.alt}
@@ -288,7 +293,7 @@ export default function ColorAccordionSection() {
                           <h4 className="text-lg font-bold text-white">{item.title}</h4>
                           <p className="mt-1 text-sm text-white/78">{item.description}</p>
                         </div>
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </>
@@ -296,6 +301,27 @@ export default function ColorAccordionSection() {
             </div>
           </div>
         </div>
+        <PhotoLightbox
+          items={galleryItems.map((item) => ({
+            src: item.src,
+            alt: item.alt,
+            title: item.title,
+            description: item.description,
+            fallbackSrc: item.fallbackSrc,
+          }))}
+          activeIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onPrevious={() =>
+            setLightboxIndex((current) =>
+              current === null ? null : (current - 1 + galleryItems.length) % galleryItems.length,
+            )
+          }
+          onNext={() =>
+            setLightboxIndex((current) =>
+              current === null ? null : (current + 1) % galleryItems.length,
+            )
+          }
+        />
       </div>
     </section>
   );

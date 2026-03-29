@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ImpactStoryPanel, { type ImpactStory } from './ImpactStoryPanel.tsx';
+import PhotoLightbox from './PhotoLightbox.tsx';
 
 type ImpactStoryTheme = {
   sectionClass: string;
@@ -117,6 +118,7 @@ const impactStories: ImpactStorySlide[] = [
 
 export default function ImpactSection() {
   const [activeStory, setActiveStory] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const story = impactStories[activeStory];
 
   const goToPreviousStory = () => {
@@ -160,7 +162,28 @@ export default function ImpactSection() {
       >
         <ChevronRight size={24} />
       </button>
-      <ImpactStoryPanel story={story} />
+      <ImpactStoryPanel story={story} onImageClick={() => setLightboxIndex(activeStory)} />
+      <PhotoLightbox
+        items={impactStories.map((item) => ({
+          src: item.imageSrc,
+          alt: item.title,
+          title: item.title,
+          description: item.description,
+          fallbackSrc: item.fallbackSrc,
+        }))}
+        activeIndex={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onPrevious={() =>
+          setLightboxIndex((current) =>
+            current === null ? null : (current - 1 + impactStories.length) % impactStories.length,
+          )
+        }
+        onNext={() =>
+          setLightboxIndex((current) =>
+            current === null ? null : (current + 1) % impactStories.length,
+          )
+        }
+      />
     </section>
   );
 }

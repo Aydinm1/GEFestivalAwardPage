@@ -9,6 +9,7 @@ export type TestimonialCardProps = {
   accent: Accent;
   imageSrc?: string;
   imageAlt?: string;
+  onImageClick?: () => void;
 };
 
 export default function TestimonialCard({
@@ -18,6 +19,7 @@ export default function TestimonialCard({
   accent,
   imageSrc,
   imageAlt,
+  onImageClick,
 }: TestimonialCardProps) {
   const colors: Record<Accent, { border: string; text: string }> = {
     primary: { border: 'border-primary', text: 'text-primary' },
@@ -33,12 +35,19 @@ export default function TestimonialCard({
       <div className={`flex flex-col ${imageSrc ? 'lg:flex-row' : ''}`}>
         {imageSrc && (
           <div className="lg:min-h-full lg:w-[34%]">
-            <img
-              src={imageSrc}
-              alt={imageAlt ?? `${author} testimonial visual`}
-              className="h-64 w-full object-cover lg:h-full"
-              referrerPolicy="no-referrer"
-            />
+            <button
+              type="button"
+              onClick={onImageClick}
+              className="block h-full w-full cursor-zoom-in"
+              aria-label={`Open testimonial image for ${author}`}
+            >
+              <img
+                src={imageSrc}
+                alt={imageAlt ?? `${author} testimonial visual`}
+                className="h-64 w-full object-cover lg:h-full"
+                referrerPolicy="no-referrer"
+              />
+            </button>
           </div>
         )}
         <div className="flex min-h-[26rem] flex-1 flex-col p-10 md:p-12">

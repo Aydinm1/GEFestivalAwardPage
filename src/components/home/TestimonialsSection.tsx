@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import TestimonialCard, { type TestimonialCardProps } from './TestimonialCard.tsx';
+import PhotoLightbox from './PhotoLightbox.tsx';
 
 const testimonials: TestimonialCardProps[] = [
   {
@@ -39,6 +40,7 @@ const testimonials: TestimonialCardProps[] = [
 
 export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const showPrevious = () => {
     setActiveIndex((current) => (current - 1 + testimonials.length) % testimonials.length);
@@ -47,6 +49,19 @@ export default function TestimonialsSection() {
   const showNext = () => {
     setActiveIndex((current) => (current + 1) % testimonials.length);
   };
+
+  const testimonialImages = testimonials
+    .map((testimonial) =>
+      testimonial.imageSrc
+        ? {
+            src: testimonial.imageSrc,
+            alt: testimonial.imageAlt ?? `${testimonial.author} testimonial visual`,
+            title: testimonial.author,
+            description: testimonial.role,
+          }
+        : null,
+    )
+    .filter((item): item is NonNullable<typeof item> => item !== null);
 
   return (
     <section className="overflow-hidden bg-surface py-20 md:py-32">
@@ -79,11 +94,38 @@ export default function TestimonialsSection() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35 }}
             >
-              <TestimonialCard {...testimonials[activeIndex]} />
+              <TestimonialCard
+                {...testimonials[activeIndex]}
+                onImageClick={
+                  testimonials[activeIndex].imageSrc
+                    ? () =>
+                        setLightboxIndex(
+                          testimonialImages.findIndex(
+                            (item) => item.src === testimonials[activeIndex].imageSrc,
+                          ),
+                        )
+                    : undefined
+                }
+              />
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
+      <PhotoLightbox
+        items={testimonialImages}
+        activeIndex={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onPrevious={() =>
+          setLightboxIndex((current) =>
+            current === null ? null : (current - 1 + testimonialImages.length) % testimonialImages.length,
+          )
+        }
+        onNext={() =>
+          setLightboxIndex((current) =>
+            current === null ? null : (current + 1) % testimonialImages.length,
+          )
+        }
+      />
     </section>
   );
 }

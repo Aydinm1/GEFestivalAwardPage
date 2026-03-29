@@ -1,7 +1,13 @@
+import { useState } from 'react';
+
 import { BarChart3, Users2, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 
+import PhotoLightbox from './PhotoLightbox.tsx';
+
 export default function ImpactDetailsSection() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   return (
     <section id="impact-section" className="bg-white px-6 py-20 scroll-mt-8 md:py-28">
       <div className="mx-auto max-w-7xl">
@@ -96,15 +102,36 @@ export default function ImpactDetailsSection() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="overflow-hidden rounded-[3rem] shadow-2xl"
           >
-            <img
-              src="https://picsum.photos/seed/impact/1200/800"
-              alt="Impact Map"
-              className="h-full w-full object-cover"
-              referrerPolicy="no-referrer"
-            />
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(0)}
+              className="block h-full w-full cursor-zoom-in"
+              aria-label="Open impact image"
+            >
+              <img
+                src="https://picsum.photos/seed/impact/1200/800"
+                alt="Impact Map"
+                className="h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </button>
           </motion.div>
         </div>
       </div>
+      <PhotoLightbox
+        items={[
+          {
+            src: 'https://picsum.photos/seed/impact/1200/800',
+            alt: 'Impact Map',
+            title: 'Impact Map',
+            description: 'Global Reach, Local Impact',
+          },
+        ]}
+        activeIndex={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onPrevious={() => setLightboxIndex(0)}
+        onNext={() => setLightboxIndex(0)}
+      />
     </section>
   );
 }
