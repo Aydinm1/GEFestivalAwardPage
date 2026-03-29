@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
+
 import { galleryItems } from './galleryItems.ts';
 
 export default function GallerySection() {
@@ -26,7 +28,13 @@ export default function GallerySection() {
 
   return (
     <section className="overflow-hidden bg-slate-50 py-20 md:py-32">
-      <div className="mx-auto mb-12 flex max-w-7xl flex-col items-start justify-between gap-8 px-6 md:mb-16 md:flex-row md:items-end">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
+        className="mx-auto mb-12 flex max-w-7xl flex-col items-start justify-between gap-8 px-6 md:mb-16 md:flex-row md:items-end"
+      >
         <div>
           <h2 className="font-headline text-4xl font-extrabold leading-tight tracking-tight text-secondary md:text-5xl">
             The Picture Section
@@ -50,14 +58,18 @@ export default function GallerySection() {
             <ChevronRight size={20} className="md:h-6 md:w-6" />
           </button>
         </div>
-      </div>
+      </motion.div>
       <div
         ref={scrollRef}
         className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-12 md:gap-8 md:px-8"
       >
-        {galleryItems.map((item) => (
-          <div
+        {galleryItems.map((item, index) => (
+          <motion.div
             key={item.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
             className={`relative flex-none w-[80vw] snap-start overflow-hidden rounded-2xl ${item.widthClass} ${item.aspectClass} group`}
           >
             <img
@@ -73,7 +85,7 @@ export default function GallerySection() {
               <h4 className="text-lg font-bold text-white md:text-xl">{item.title}</h4>
               <p className="text-xs text-white/70 md:text-sm">{item.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

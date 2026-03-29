@@ -1,10 +1,17 @@
 import { BarChart3, Users2, Zap } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function ImpactDetailsSection() {
   return (
     <section id="impact-section" className="bg-white px-6 py-20 scroll-mt-8 md:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="mb-16 text-center"
+        >
           <div className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-primary">
             Impact
           </div>
@@ -14,28 +21,54 @@ export default function ImpactDetailsSection() {
           <p className="text-lg text-slate-500 md:text-xl">
             Measuring the measurable, and celebrating the immeasurable.
           </p>
-        </div>
+        </motion.div>
 
         <div className="mb-24 grid grid-cols-1 gap-12 md:grid-cols-3">
-          <div className="rounded-3xl border border-slate-100 bg-slate-50 p-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.45, delay: 0.02, ease: 'easeOut' }}
+            whileHover={{ y: -6 }}
+            className="rounded-3xl border border-slate-100 bg-slate-50 p-8"
+          >
             <BarChart3 className="mb-6 text-primary" size={40} />
             <h3 className="mb-2 text-4xl font-black text-secondary">$12.4M</h3>
             <p className="font-medium text-slate-500">Direct Community Investment</p>
-          </div>
-          <div className="rounded-3xl border border-slate-100 bg-slate-50 p-8">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.45, delay: 0.1, ease: 'easeOut' }}
+            whileHover={{ y: -6 }}
+            className="rounded-3xl border border-slate-100 bg-slate-50 p-8"
+          >
             <Users2 className="mb-6 text-accent-orange" size={40} />
             <h3 className="mb-2 text-4xl font-black text-secondary">45,000+</h3>
             <p className="font-medium text-slate-500">Active Participants Globally</p>
-          </div>
-          <div className="rounded-3xl border border-slate-100 bg-slate-50 p-8">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.45, delay: 0.18, ease: 'easeOut' }}
+            whileHover={{ y: -6 }}
+            className="rounded-3xl border border-slate-100 bg-slate-50 p-8"
+          >
             <Zap className="mb-6 text-accent-pink" size={40} />
             <h3 className="mb-2 text-4xl font-black text-secondary">92%</h3>
             <p className="font-medium text-slate-500">Positive Social Outcome Rate</p>
-          </div>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
             <h3 className="mb-8 font-headline text-4xl font-extrabold text-secondary">
               Global Reach, Local Impact
             </h3>
@@ -55,15 +88,21 @@ export default function ImpactDetailsSection() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="overflow-hidden rounded-[3rem] shadow-2xl">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 32, scale: 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="overflow-hidden rounded-[3rem] shadow-2xl"
+          >
             <img
               src="https://picsum.photos/seed/impact/1200/800"
               alt="Impact Map"
               className="h-full w-full object-cover"
               referrerPolicy="no-referrer"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

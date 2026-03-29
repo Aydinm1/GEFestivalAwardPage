@@ -1,4 +1,5 @@
 import { Leaf } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const commitments = [
   {
@@ -19,7 +20,13 @@ export default function SustainabilitySection() {
   return (
     <section id="sustainability-section" className="bg-white px-6 py-20 scroll-mt-8 md:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="mb-16 text-center"
+        >
           <div className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-emerald-600">
             Sustainability
           </div>
@@ -29,24 +36,42 @@ export default function SustainabilitySection() {
           <p className="text-lg text-slate-500 md:text-xl">
             Stewardship of the earth as a cultural imperative.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 items-center gap-20 md:grid-cols-2">
-          <div className="aspect-square overflow-hidden rounded-[3rem]">
+          <motion.div
+            initial={{ opacity: 0, x: -32, scale: 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="aspect-square overflow-hidden rounded-[3rem]"
+          >
             <img
               src="https://picsum.photos/seed/nature/1000/1000"
               alt="Sustainability"
               className="h-full w-full object-cover"
               referrerPolicy="no-referrer"
             />
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
             <h3 className="mb-8 font-headline text-4xl font-extrabold text-secondary">
               Our 2025 Commitments
             </h3>
             <div className="space-y-8">
-              {commitments.map((item) => (
-                <div key={item.title} className="flex gap-6">
+              {commitments.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
+                  className="flex gap-6"
+                >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50">
                     <Leaf className="text-emerald-600" size={24} />
                   </div>
@@ -54,10 +79,10 @@ export default function SustainabilitySection() {
                     <h4 className="mb-2 text-xl font-bold text-secondary">{item.title}</h4>
                     <p className="text-slate-500">{item.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

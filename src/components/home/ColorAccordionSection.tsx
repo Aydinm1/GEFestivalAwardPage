@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
 
 import ColorPaletteCard, { type ColorPanel } from './ColorPaletteCard.tsx';
 import { galleryItems } from './galleryItems.ts';
@@ -105,7 +106,13 @@ export default function ColorAccordionSection() {
   return (
     <section className="overflow-hidden bg-white px-6 py-20 md:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 max-w-3xl md:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="mb-10 max-w-3xl md:mb-14"
+        >
           <div className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-primary">
             Style Guide Palette
           </div>
@@ -116,9 +123,15 @@ export default function ColorAccordionSection() {
             Four palette cards are shown at a time. Use the arrows to rotate through the full set
             one card at a time.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="relative md:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: 'easeOut', delay: 0.08 }}
+          className="relative md:px-12"
+        >
           <div className="mb-4 flex justify-center md:hidden">
             <div className="min-w-[4.5rem] text-center text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
               {startIndex + 1} - {((startIndex + PANELS_PER_PAGE - 1) % colorPanels.length) + 1}
@@ -178,7 +191,7 @@ export default function ColorAccordionSection() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         <div
           className={`grid transition-[grid-template-rows,opacity,margin] duration-500 ease-out ${
