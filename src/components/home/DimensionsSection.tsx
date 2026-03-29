@@ -1,105 +1,65 @@
-import { motion } from 'motion/react';
-import {
-  Briefcase,
-  GraduationCap,
-  HeartHandshake,
-  Lightbulb,
-  Microscope,
-  Store,
-  Trophy,
-  UserRound,
-  type LucideIcon,
-} from 'lucide-react';
+import DimensionStatCard, { type DimensionStat } from './DimensionStatCard.tsx';
 
-type Dimension = {
-  icon: LucideIcon | string;
-  value: string;
-  label: string;
-  description: string;
-  colorClass: string;
-};
+const sharedStatImage = '/icon-athlete.png';
 
-const dimensions: Dimension[] = [
+const dimensions: DimensionStat[] = [
   {
-    icon: '/icon-athlete.png',
-    value: '3700+',
-    label: 'Artists & Athletes',
-    description: 'International symposiums and knowledge-sharing workshops.',
+    img: sharedStatImage,
+    number: '3700+',
+    title: 'Artists & Athletes',
+    bodyText: 'International symposiums and knowledge-sharing workshops.',
     colorClass: 'text-primary',
   },
   {
-    icon: UserRound,
-    value: '18,000+',
-    label: 'Attendees',
-    description: 'Holistic wellness programs rooted in cultural heritage.',
+    img: sharedStatImage,
+    number: '18,000+',
+    title: 'Attendees',
+    bodyText: 'Holistic wellness programs rooted in cultural heritage.',
     colorClass: 'text-purple-600',
   },
   {
-    icon: Trophy,
-    value: '2,800+',
-    label: 'Volunteers',
-    description: 'Elite multi-sport competitions across 20+ disciplines.',
+    img: sharedStatImage,
+    number: '2,800+',
+    title: 'Volunteers',
+    bodyText: 'Elite multi-sport competitions across 20+ disciplines.',
     colorClass: 'text-orange-600',
   },
   {
-    icon: HeartHandshake,
-    value: '12M',
-    label: 'USD Impact',
-    description: 'Direct investment in community development initiatives.',
-    colorClass: 'text-red-600',
-  },
-  {
-    icon: Microscope,
-    value: '50+',
-    label: 'Countries Represented',
-    description: 'Advancing the science of human health and longevity.',
+    img: sharedStatImage,
+    number: '50+',
+    title: 'Countries Represented',
+    bodyText: 'Advancing the science of human health and longevity.',
     colorClass: 'text-green-600',
   },
   {
-    icon: GraduationCap,
-    value: '600+',
-    label: 'Events Around The World',
-    description: 'Nurturing the next generation of global citizens.',
+    img: sharedStatImage,
+    number: '600+',
+    title: 'Events Around The World',
+    bodyText: 'Nurturing the next generation of global citizens.',
     colorClass: 'text-yellow-600',
   },
   {
-    icon: Briefcase,
-    value: '1M+',
-    label: 'Online Viewers',
-    description: 'Exclusive networking for policy makers and industry heads.',
+    img: sharedStatImage,
+    number: '1M+',
+    title: 'Online Viewers',
+    bodyText: 'Exclusive networking for policy makers and industry heads.',
     colorClass: 'text-slate-600',
   },
   {
-    icon: Store,
-    value: '100+',
-    label: 'Media Mentions',
-    description: 'Empowering sustainable micro-economies worldwide.',
+    img: sharedStatImage,
+    number: '100+',
+    title: 'Media Mentions',
+    bodyText: 'Empowering sustainable micro-economies worldwide.',
     colorClass: 'text-teal-600',
   },
+  {
+    img: sharedStatImage,
+    number: '12M',
+    title: 'USD Impact',
+    bodyText: 'Direct investment in community development initiatives.',
+    colorClass: 'text-red-600',
+  },
 ];
-
-function DimensionItem({ icon: Icon, value, label, description, colorClass }: Dimension) {
-  return (
-    <motion.div whileHover={{ y: -5 }} className="flex flex-col items-center text-center">
-      <div className={`${colorClass} mb-6 flex items-center justify-center`}>
-        {typeof Icon === 'string' ? (
-          <img
-            src={Icon}
-            alt={label}
-            className="h-[104px] w-[104px] rounded-full border-[0.25px] border-slate-200 bg-white shadow-md object-contain md:h-[125px] md:w-[125px]"
-          />
-        ) : (
-          <Icon className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
-        )}
-      </div>
-      <div className="mb-2 font-headline text-4xl font-black text-secondary [-webkit-text-stroke:1px_currentColor] md:text-5xl md:[-webkit-text-stroke:1.5px_currentColor]">
-        {value}
-      </div>
-      <div className="mb-4 text-sm font-bold uppercase tracking-widest text-primary">{label}</div>
-      <p className="text-sm font-medium leading-relaxed text-slate-500">{description}</p>
-    </motion.div>
-  );
-}
 
 export default function DimensionsSection() {
   return (
@@ -135,8 +95,8 @@ export default function DimensionsSection() {
         </div>
         <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 md:gap-y-16">
           {dimensions.map((dimension) => (
-            <div key={dimension.label}>
-              <DimensionItem {...dimension} />
+            <div key={dimension.title}>
+              <DimensionStatCard {...dimension} />
             </div>
           ))}
         </div>
