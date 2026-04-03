@@ -5,7 +5,6 @@ type HeroSectionProps = {
 };
 
 const heroLinks = [
-  { id: 'mhi-quote-section', label: 'MHI Quote' },
   { id: 'net-promoter-section', label: 'Impact' },
   { id: 'vision-section', label: 'Sustainability', storyIndex: 6 },
 ];
