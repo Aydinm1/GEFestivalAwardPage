@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import FestivalHighlightPanel, { type FestivalHighlight } from './FestivalHighlightPanel.tsx';
+import FestivalHighlightMediaVideoModal from './FestivalHighlightMediaVideoModal.tsx';
 
 type FestivalHighlightTheme = {
   sectionClass: string;
@@ -160,6 +161,22 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     posterSrc: '/video-sustainability-still.jpeg',
     glowClass: 'bg-emerald-500/20',
     badgeClass: 'border-emerald-300/30 bg-emerald-300/20 text-emerald-100',
+    subMediaItems: [
+      {
+        id: 'sustainability-impact-report',
+        title: 'Impact Report',
+        type: 'pdf',
+        href: '/Impact%20Report%2023March.pdf',
+        thumbnailSrc: '/gallery-2.jpg',
+      },
+      {
+        id: 'sustainability-faanoos-video',
+        title: 'Faanoos Video',
+        type: 'video',
+        href: '/video-faanoos.mp4',
+        thumbnailSrc: '/video-faanoos-still.png',
+      },
+    ],
     points: [
       {
         title: 'Zero-Waste Initiative',
@@ -253,11 +270,17 @@ export default function FestivalHighlightsSection({
 }: FestivalHighlightsSectionProps) {
   const [isTheaterMode, setIsTheaterMode] = useState(false);
   const [isNativeFullscreen, setIsNativeFullscreen] = useState(false);
+  const [activeVideoItemId, setActiveVideoItemId] = useState<string | null>(null);
   const highlight = festivalHighlights[selectedHighlightIndex];
+  const activeVideoItem =
+    highlight.subMediaItems?.find(
+      (item) => item.type === 'video' && item.id === activeVideoItemId,
+    ) ?? null;
 
   useEffect(() => {
     setIsTheaterMode(false);
     setIsNativeFullscreen(false);
+    setActiveVideoItemId(null);
   }, [selectedHighlightIndex]);
 
   return (
@@ -321,7 +344,17 @@ export default function FestivalHighlightsSection({
       <FestivalHighlightPanel
         highlight={highlight}
         isTheaterMode={isTheaterMode}
+        activeVideoItemId={activeVideoItem?.id ?? null}
         onPlaybackStart={() => setIsTheaterMode(true)}
+        onNativeFullscreenChange={setIsNativeFullscreen}
+        onVideoItemSelect={(item) => {
+          setActiveVideoItemId(item.id);
+        }}
+      />
+      <FestivalHighlightMediaVideoModal
+        item={activeVideoItem}
+        isNativeFullscreen={isNativeFullscreen}
+        onClose={() => setActiveVideoItemId(null)}
         onNativeFullscreenChange={setIsNativeFullscreen}
       />
     </section>

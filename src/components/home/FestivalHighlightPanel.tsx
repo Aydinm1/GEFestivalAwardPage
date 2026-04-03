@@ -1,5 +1,17 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
+import FestivalHighlightMediaRail from './FestivalHighlightMediaRail.tsx';
+
+export type FestivalHighlightMediaType = 'pdf' | 'doc' | 'link' | 'video' | 'image';
+
+export type FestivalHighlightMediaItem = {
+  id: string;
+  title: string;
+  type: FestivalHighlightMediaType;
+  href: string;
+  thumbnailSrc?: string;
+  description?: string;
+};
 
 export type FestivalHighlight = {
   eyebrow: string;
@@ -13,21 +25,26 @@ export type FestivalHighlight = {
     title: string;
     description: string;
   }>;
+  subMediaItems?: FestivalHighlightMediaItem[];
   bottomImageSrc?: string;
 };
 
 type FestivalHighlightPanelProps = {
   highlight: FestivalHighlight;
   isTheaterMode: boolean;
+  activeVideoItemId?: string | null;
   onPlaybackStart: () => void;
   onNativeFullscreenChange: (isFullscreen: boolean) => void;
+  onVideoItemSelect: (item: FestivalHighlightMediaItem) => void;
 };
 
 export default function FestivalHighlightPanel({
   highlight,
   isTheaterMode,
+  activeVideoItemId = null,
   onPlaybackStart,
   onNativeFullscreenChange,
+  onVideoItemSelect,
 }: FestivalHighlightPanelProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -158,6 +175,14 @@ export default function FestivalHighlightPanel({
             <source src={highlight.videoSrc} type="video/mp4" />
           </video>
         </div>
+        {highlight.subMediaItems?.length && !isTheaterMode ? (
+          <FestivalHighlightMediaRail
+            items={highlight.subMediaItems}
+            activeVideoItemId={activeVideoItemId}
+            onVideoSelect={onVideoItemSelect}
+            className="mt-8"
+          />
+        ) : null}
         {highlight.bottomImageSrc && !isTheaterMode && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
