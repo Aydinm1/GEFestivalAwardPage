@@ -25,17 +25,17 @@ const mediaTypeActionLabel: Record<FestivalHighlightMediaItem['type'], string> =
   image: 'View gallery',
 };
 
-type FestivalHighlightMediaCardProps = {
+type SecondaryMediaCardProps = {
   item: FestivalHighlightMediaItem;
   isActive?: boolean;
   onSelect?: (item: FestivalHighlightMediaItem) => void;
 };
 
-export default function FestivalHighlightMediaCard({
+export default function SecondaryMediaCard({
   item,
   isActive = false,
   onSelect,
-}: FestivalHighlightMediaCardProps) {
+}: SecondaryMediaCardProps) {
   const cardClassName = `group relative flex h-full min-h-56 flex-col overflow-hidden rounded-[24px] border shadow-[0_22px_40px_rgba(8,15,36,0.2)] ring-1 ring-white/6 backdrop-blur-md transition-colors duration-300 ${
     isActive
       ? 'border-white/34 bg-[linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0.12))] ring-2 ring-white/20'

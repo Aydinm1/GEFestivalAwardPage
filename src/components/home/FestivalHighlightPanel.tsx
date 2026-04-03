@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
-import FestivalHighlightMediaRail from './FestivalHighlightMediaRail.tsx';
+import SecondaryMediaSection from './SecondaryMediaSection.tsx';
 
 export type FestivalHighlightMediaType = 'pdf' | 'doc' | 'link' | 'video' | 'image';
 
@@ -176,7 +176,7 @@ export default function FestivalHighlightPanel({
           </video>
         </div>
         {highlight.subMediaItems?.length && !isTheaterMode ? (
-          <FestivalHighlightMediaRail
+          <SecondaryMediaSection
             items={highlight.subMediaItems}
             activeVideoItemId={activeVideoItemId}
             onVideoSelect={onVideoItemSelect}

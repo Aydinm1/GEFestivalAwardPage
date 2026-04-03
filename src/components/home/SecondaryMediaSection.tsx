@@ -1,19 +1,19 @@
-import FestivalHighlightMediaCard from './FestivalHighlightMediaCard.tsx';
+import SecondaryMediaCard from './SecondaryMediaCard.tsx';
 import { type FestivalHighlightMediaItem } from './FestivalHighlightPanel.tsx';
 
-type FestivalHighlightMediaRailProps = {
+type SecondaryMediaSectionProps = {
   items: FestivalHighlightMediaItem[];
   className?: string;
   activeVideoItemId?: string | null;
   onVideoSelect?: (item: FestivalHighlightMediaItem) => void;
 };
 
-export default function FestivalHighlightMediaRail({
+export default function SecondaryMediaSection({
   items,
   className = '',
   activeVideoItemId = null,
   onVideoSelect,
-}: FestivalHighlightMediaRailProps) {
+}: SecondaryMediaSectionProps) {
   return (
     <div className={className}>
       <div className="mb-5 flex items-center gap-4">
@@ -25,7 +25,7 @@ export default function FestivalHighlightMediaRail({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {items.map((item) => (
           <div key={item.id} className="h-full">
-            <FestivalHighlightMediaCard
+            <SecondaryMediaCard
               item={item}
               isActive={item.type === 'video' && item.id === activeVideoItemId}
               onSelect={onVideoSelect}
