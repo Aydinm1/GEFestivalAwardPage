@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)"
+
+if [[ -z "${repo_root}" ]]; then
+  echo "Not inside a git repository." >&2
+  exit 1
+fi
+
+cd "${repo_root}"
+
+current_branch="$(git branch --show-current)"
+
+if [[ "${current_branch}" != "dev" ]]; then
+  echo "Current branch is '${current_branch}'. Switch to 'dev' before running push dev." >&2
+  exit 1
+fi
+
+if ! git diff --quiet || ! git diff --cached --quiet || [[ -n "$(git ls-files --others --exclude-standard)" ]]; then
+  commit_message="${*:-}"
+
+  if [[ -z "${commit_message}" ]]; then
+    print -n "Commit message: "
+    read -r commit_message
+  fi
+
+  if [[ -z "${commit_message}" ]]; then
+    echo "Commit message is required." >&2
+    exit 1
+  fi
+
+  git add -A
+  git commit -m "${commit_message}"
+fi
+
+git push origin dev
