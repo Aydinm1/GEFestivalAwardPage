@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react';
+import { useEffect, useRef } from 'react';
 
 export type FestivalHighlight = {
   eyebrow: string;
@@ -18,16 +19,74 @@ export type FestivalHighlight = {
 type FestivalHighlightPanelProps = {
   highlight: FestivalHighlight;
   isTheaterMode: boolean;
-  onPlay: () => void;
-  onPause: () => void;
+  onPlaybackStart: () => void;
+  onNativeFullscreenChange: (isFullscreen: boolean) => void;
 };
 
 export default function FestivalHighlightPanel({
   highlight,
   isTheaterMode,
-  onPlay,
-  onPause,
+  onPlaybackStart,
+  onNativeFullscreenChange,
 }: FestivalHighlightPanelProps) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    const syncNativeFullscreenState = () => {
+      const fullscreenDocument = document as Document & {
+        webkitFullscreenElement?: Element | null;
+      };
+      const webkitVideo = video as HTMLVideoElement & {
+        webkitDisplayingFullscreen?: boolean;
+      };
+      const fullscreenElement =
+        document.fullscreenElement ?? fullscreenDocument.webkitFullscreenElement ?? null;
+
+      onNativeFullscreenChange(
+        fullscreenElement === video || Boolean(webkitVideo.webkitDisplayingFullscreen),
+      );
+    };
+
+    syncNativeFullscreenState();
+
+    document.addEventListener('fullscreenchange', syncNativeFullscreenState);
+    document.addEventListener(
+      'webkitfullscreenchange',
+      syncNativeFullscreenState as EventListener,
+    );
+    video.addEventListener(
+      'webkitbeginfullscreen',
+      syncNativeFullscreenState as EventListener,
+    );
+    video.addEventListener(
+      'webkitendfullscreen',
+      syncNativeFullscreenState as EventListener,
+    );
+
+    return () => {
+      document.removeEventListener('fullscreenchange', syncNativeFullscreenState);
+      document.removeEventListener(
+        'webkitfullscreenchange',
+        syncNativeFullscreenState as EventListener,
+      );
+      video.removeEventListener(
+        'webkitbeginfullscreen',
+        syncNativeFullscreenState as EventListener,
+      );
+      video.removeEventListener(
+        'webkitendfullscreen',
+        syncNativeFullscreenState as EventListener,
+      );
+      onNativeFullscreenChange(false);
+    };
+  }, [highlight.videoSrc, onNativeFullscreenChange]);
+
   return (
     <div
       className={`relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-24 ${
@@ -87,15 +146,14 @@ export default function FestivalHighlightPanel({
           }`}
         >
           <video
+            ref={videoRef}
             key={highlight.videoSrc}
             playsInline
             controls
             preload={isTheaterMode ? 'metadata' : 'none'}
             poster={highlight.posterSrc}
             className="h-full w-full object-cover"
-            onPlay={onPlay}
-            onPause={onPause}
-            onEnded={onPause}
+            onPlay={onPlaybackStart}
           >
             <source src={highlight.videoSrc} type="video/mp4" />
           </video>

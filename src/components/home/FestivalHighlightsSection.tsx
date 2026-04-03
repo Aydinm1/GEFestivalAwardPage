@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import FestivalHighlightPanel, { type FestivalHighlight } from './FestivalHighlightPanel.tsx';
 
 type FestivalHighlightTheme = {
@@ -252,7 +252,13 @@ export default function FestivalHighlightsSection({
   setSelectedHighlightIndex,
 }: FestivalHighlightsSectionProps) {
   const [isTheaterMode, setIsTheaterMode] = useState(false);
+  const [isNativeFullscreen, setIsNativeFullscreen] = useState(false);
   const highlight = festivalHighlights[selectedHighlightIndex];
+
+  useEffect(() => {
+    setIsTheaterMode(false);
+    setIsNativeFullscreen(false);
+  }, [selectedHighlightIndex]);
 
   return (
     <section
@@ -266,7 +272,11 @@ export default function FestivalHighlightsSection({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0 z-30 bg-black/80"
-            onClick={() => setIsTheaterMode(false)}
+            onClick={() => {
+              if (!isNativeFullscreen) {
+                setIsTheaterMode(false);
+              }
+            }}
           />
         )}
       </AnimatePresence>
@@ -311,8 +321,8 @@ export default function FestivalHighlightsSection({
       <FestivalHighlightPanel
         highlight={highlight}
         isTheaterMode={isTheaterMode}
-        onPlay={() => setIsTheaterMode(true)}
-        onPause={() => setIsTheaterMode(false)}
+        onPlaybackStart={() => setIsTheaterMode(true)}
+        onNativeFullscreenChange={setIsNativeFullscreen}
       />
     </section>
   );
