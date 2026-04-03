@@ -90,6 +90,7 @@ export default function FestivalHighlightPanel({
             key={highlight.videoSrc}
             playsInline
             controls
+            preload={isTheaterMode ? 'metadata' : 'none'}
             poster={highlight.posterSrc}
             className="h-full w-full object-cover"
             onPlay={onPlay}
@@ -105,7 +106,13 @@ export default function FestivalHighlightPanel({
             animate={{ opacity: 1, y: 0 }}
             className="mt-8 flex justify-center px-4"
           >
-            <img src={highlight.bottomImageSrc} alt="" className="h-auto w-full max-w-2xl object-contain opacity-90 drop-shadow-md" />
+            <img
+              src={highlight.bottomImageSrc}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-full max-w-2xl object-contain opacity-90 drop-shadow-md"
+            />
           </motion.div>
         )}
       </motion.div>

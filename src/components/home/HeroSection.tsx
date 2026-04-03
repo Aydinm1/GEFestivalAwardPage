@@ -19,7 +19,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           poster="/impact-image.jpeg"
           className="absolute inset-0 h-full w-full object-cover object-[center_92%] scale-[1.04]"
         >
@@ -40,6 +40,8 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         <img
           src="/logo.png"
           alt="Global Encounters Logo"
+          loading="eager"
+          decoding="async"
           className="h-32 w-auto object-contain drop-shadow-[0_8px_16px_rgba(35,118,188,0.35)] md:h-56"
           referrerPolicy="no-referrer"
         />

@@ -29,6 +29,8 @@ export default function OverviewSection() {
             <img
               src="/GE_Festival_Signature_2025.png"
               alt="Global Encounters Festival 2025 Signature"
+              loading="lazy"
+              decoding="async"
               className="w-full max-w-sm object-contain"
             />
           </div>

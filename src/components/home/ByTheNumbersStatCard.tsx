@@ -21,6 +21,8 @@ export default function ByTheNumbersStatCard({
         <img
           src={img}
           alt={title}
+          loading="lazy"
+          decoding="async"
           className="h-[104px] w-[104px] rounded-full border-[0.25px] border-slate-200 bg-white object-contain shadow-md md:h-[125px] md:w-[125px]"
         />
       </div>
