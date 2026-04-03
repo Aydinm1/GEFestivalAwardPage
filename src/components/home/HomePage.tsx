@@ -1,12 +1,10 @@
-import ColorAccordionSection from './ColorAccordionSection.tsx';
-import DimensionsSection from './DimensionsSection.tsx';
-import GallerySection from './GallerySection.tsx';
+import { useState } from 'react';
+
+import ByTheNumbersSection from './ByTheNumbersSection.tsx';
 import HeroSection from './HeroSection.tsx';
-import ImpactDetailsSection from './ImpactDetailsSection.tsx';
 import ImpactSection from './ImpactSection.tsx';
-import LegacySection from './LegacySection.tsx';
+import FestivalHighlightsSection from './FestivalHighlightsSection.tsx';
 import OverviewSection from './OverviewSection.tsx';
-import SustainabilitySection from './SustainabilitySection.tsx';
 import TestimonialsSection from './TestimonialsSection.tsx';
 
 type HomePageProps = {
@@ -14,18 +12,26 @@ type HomePageProps = {
 };
 
 export default function HomePage({ onNavigate }: HomePageProps) {
+  const [selectedHighlightIndex, setSelectedHighlightIndex] = useState(0);
+
+  const handleNavigate = (sectionId: string, highlightIndex?: number) => {
+    if (highlightIndex !== undefined) {
+      setSelectedHighlightIndex(highlightIndex);
+    }
+    onNavigate(sectionId);
+  };
+
   return (
-    <>
-      <HeroSection onNavigate={onNavigate} />
-      <OverviewSection />
-      <DimensionsSection />
-      <ImpactSection />
-      <ImpactDetailsSection />
-      <LegacySection />
-      <SustainabilitySection />
-      <TestimonialsSection />
-      <GallerySection />
-      <ColorAccordionSection />
-    </>
+      <>
+        <HeroSection onNavigate={handleNavigate} />
+        <OverviewSection />
+        <ByTheNumbersSection />
+        <FestivalHighlightsSection
+          selectedHighlightIndex={selectedHighlightIndex}
+          setSelectedHighlightIndex={setSelectedHighlightIndex}
+        />
+        <TestimonialsSection />
+        <ImpactSection />
+      </>
   );
 }

@@ -1,189 +1,175 @@
-import { useState } from 'react';
+import { Star } from 'lucide-react';
+import { motion } from 'motion/react';
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import ImpactStoryPanel, { type ImpactStory } from './ImpactStoryPanel.tsx';
-import PhotoLightbox from './PhotoLightbox.tsx';
+const netPromoterScores = [
+  { label: 'Overall Festival', value: 66, tone: 'bg-primary text-white border-primary' },
+  { label: 'Jubilee Games', value: 74, tone: 'bg-white text-secondary border-slate-200' },
+  { label: 'Jubilee Arts', value: 56, tone: 'bg-white text-secondary border-slate-200' },
+  { label: 'Volunteering', value: 48, tone: 'bg-white text-secondary border-slate-200' },
+];
 
-type ImpactStoryTheme = {
-  sectionClass: string;
-  ambientLeftClass: string;
-  ambientRightClass: string;
-  arrowButtonClass: string;
-};
+const satisfactionRatings = [
+  { label: 'Attendees', value: 4.59 },
+  { label: 'Participants', value: 4.63 },
+  { label: 'Volunteers', value: 4.58 },
+];
 
-type ImpactStorySlide = ImpactStoryTheme & ImpactStory;
-
-const impactStories: ImpactStorySlide[] = [
+const cohortRatings = [
   {
-    eyebrow: 'Our Global Vision',
-    title: 'Redefining Unity Through Excellence.',
-    description:
-      'Global Encounters is more than a festival; it is a biennial commitment to the elevation of the human spirit. Our mission is to bridge geographic and socio-economic divides by creating a platform where elite talent meets grassroots impact.',
-    sectionClass: 'bg-primary',
-    ambientLeftClass: 'bg-guide-light-blue/18',
-    ambientRightClass: 'bg-secondary/10',
-    arrowButtonClass: 'bg-primary/55 hover:bg-primary/72',
-    imageSrc: '/impact-image.jpeg',
-    fallbackSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDk8ZIzKYL_1frPuMJq9AiU0XY1_p_8lGJJcTv1UUu5ph04qPCN9nvzDXwkxe4hPVkp2xt9amLdr1Ol72ZfiUZUJF5whDC002Rao8oQmU_wcnjsKuT89y-dw_v60WbcuP2FyfyjKVs_Jhs-ptqAVpDK2czBFcGn6YOmt0to5lVGD5w6m6H35LvkKZm92Qo6hXTQLS7A4RllcfRqdR65pOwmPwh6JKM03MFjfi6OHzap2v7vUlRNuFqw8FOGlNmFWD4iT-p0pp9BzCXe',
-    glowClass: 'bg-primary/25',
-    badgeClass: 'border-primary/30 bg-primary/20 text-blue-100',
-    points: [
-      {
-        title: 'Sustainable Legacy',
-        description: 'Carbon-neutral operations with lasting infrastructure for host cities.',
-      },
-      {
-        title: 'Elite Competition',
-        description: 'Sanctioned sporting events featuring world-class officiating and talent.',
-      },
+    title: 'Athletes',
+    rows: [
+      { label: 'Overall Experience', value: 4.4 },
+      { label: 'Learning Experience', value: 4.1 },
+      { label: 'Expanded Networks', value: 4.0 },
     ],
   },
   {
-    eyebrow: 'Cultural Exchange',
-    title: 'Creative Dialogue Across Every Border.',
-    description:
-      'Residencies, live showcases, and shared learning spaces are designed to make cross-cultural collaboration visible, immediate, and memorable for every audience segment.',
-    sectionClass: 'bg-guide-teal',
-    ambientLeftClass: 'bg-guide-light-blue/16',
-    ambientRightClass: 'bg-primary/10',
-    arrowButtonClass: 'bg-guide-teal/55 hover:bg-guide-teal/72',
-    imageSrc: '/gallery-2.jpg',
-    fallbackSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDOm1aw4D9QDoqDMitMjql0fLZKUTpzCG4G1e9G4lSqHGHHbFvN1KqYuTE9Vt8DMmTl7_0ZQ0PSZUVxIO76eS4rnlAezS8Sgi6vMxAqe-9z611f9ByzUfxeRUxsbMbHXAG-v6j0a0gdkuBmGqpUJllIrm79O6JjywRxq_zZh-oIAylgNjeoS4Umh8KtYn9aeKc44_htk7qk6VKxNpKfwX23i6_GcNM615XvGGZR7FSrrGEag2-V-BiZzWfXz9bV8knCknCmiQ9_vfmp',
-    glowClass: 'bg-guide-teal/25',
-    badgeClass: 'border-guide-teal/30 bg-guide-teal/20 text-teal-100',
-    points: [
-      {
-        title: 'Living Heritage',
-        description: 'Artists and tradition-bearers co-create work that feels rooted rather than staged.',
-      },
-      {
-        title: 'Shared Learning',
-        description: 'Dialogue sessions connect institutions, creators, and young participants in real time.',
-      },
-    ],
-  },
-  {
-    eyebrow: 'Community Impact',
-    title: 'Investment That Extends Beyond The Event.',
-    description:
-      'The program architecture channels festival attention into measurable community outcomes, from micro-enterprise support to health and education partnerships that continue after the closing ceremony.',
-    sectionClass: 'bg-[#ae8850]',
-    ambientLeftClass: 'bg-guide-yellow/12',
-    ambientRightClass: 'bg-secondary/10',
-    arrowButtonClass: 'bg-[#ae8850]/60 hover:bg-[#ae8850]/78',
-    imageSrc: '/gallery-3.jpeg',
-    fallbackSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCgS2YSrysUHbpnIvN31aIjgkbyqj1J9biRBmMNgrliX5eIAUCuJyCup1Nn0nT3W42G0kjWPD5Ga3k2hk1MkSasc8PVcwMc8Qr-zoA2VV0Ikgodyt7tzwXhdKDokttPdV9hL_U5YD6GjBWECuS-oMxRBf_iDZ9pD20UdPIP_SDqE8ajxpsOH25H_PzuYBSmhU7AVrXADdgzRvXUL47YvV8fS_Bs2zGuAx31AExmd-EAvDr_H2fVzhz0pyWH0W15l4bOhDB2li7CH4hq',
-    glowClass: 'bg-guide-gold/18',
-    badgeClass: 'border-white/24 bg-white/12 text-white',
-    points: [
-      {
-        title: 'Local Enterprise',
-        description: 'Vendor strategy prioritizes artisans and mission-aligned small businesses.',
-      },
-      {
-        title: 'Research Partnerships',
-        description: 'Health and knowledge initiatives turn participation into long-term collaboration.',
-      },
-    ],
-  },
-  {
-    eyebrow: 'Youth Momentum',
-    title: 'Next-Generation Leadership In Motion.',
-    description:
-      'Youth athletes, students, and emerging leaders are given high-visibility platforms that combine mentorship, performance, and direct access to international networks.',
-    sectionClass: 'bg-[#b43f7d]',
-    ambientLeftClass: 'bg-guide-purple/14',
-    ambientRightClass: 'bg-primary/10',
-    arrowButtonClass: 'bg-[#b43f7d]/60 hover:bg-[#b43f7d]/78',
-    imageSrc: '/gallery-4.jpg',
-    fallbackSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuD9yN7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7_7',
-    glowClass: 'bg-guide-magenta/18',
-    badgeClass: 'border-white/24 bg-white/12 text-white',
-    points: [
-      {
-        title: 'Youth Access',
-        description: 'Scholarships and guided pathways make elite participation more equitable.',
-      },
-      {
-        title: 'Global Mentors',
-        description: 'Students engage directly with dignitaries, coaches, and industry leaders.',
-      },
+    title: 'Artists',
+    rows: [
+      { label: 'Overall Experience', value: 4.2 },
+      { label: 'Continue Engagement', value: 4.7 },
+      { label: 'Upskilled Expertise', value: 4.4 },
     ],
   },
 ];
 
-export default function ImpactSection() {
-  const [activeStory, setActiveStory] = useState(0);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const story = impactStories[activeStory];
-
-  const goToPreviousStory = () => {
-    setActiveStory((current) => (current === 0 ? impactStories.length - 1 : current - 1));
-  };
-
-  const goToNextStory = () => {
-    setActiveStory((current) => (current === impactStories.length - 1 ? 0 : current + 1));
-  };
+function StarRating({ rating, max = 5 }: { rating: number; max?: number }) {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5;
+  const emptyStars = max - fullStars - (halfStar ? 1 : 0);
 
   return (
+    <div className="flex justify-center gap-1 text-guide-gold">
+      {Array.from({ length: fullStars }).map((_, index) => (
+        <Star key={`full-${index}`} className="h-5 w-5 fill-current" />
+      ))}
+      {halfStar && <Star className="h-5 w-5 fill-current opacity-60" />}
+      {Array.from({ length: emptyStars }).map((_, index) => (
+        <Star key={`empty-${index}`} className="h-5 w-5 fill-current text-slate-300" />
+      ))}
+    </div>
+  );
+}
+
+export default function ImpactSection() {
+  return (
     <section
-      className={`relative overflow-hidden px-6 py-20 text-white transition-colors duration-700 md:py-32 ${story.sectionClass}`}
+      id="net-promoter-section"
+      className="scroll-mt-8 bg-slate-50 px-6 py-20 md:py-32"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className={`absolute -left-20 top-[-8%] h-96 w-96 rounded-full opacity-75 blur-[120px] transition-colors duration-700 md:h-[34rem] md:w-[34rem] ${story.ambientLeftClass}`}
-        />
-        <div
-          className={`absolute -right-16 bottom-[-12%] h-96 w-96 rounded-full opacity-70 blur-[120px] transition-colors duration-700 md:h-[34rem] md:w-[34rem] ${story.ambientRightClass}`}
-        />
-        <div className="absolute inset-x-[16%] top-0 hidden h-full w-20 -skew-x-12 bg-white/6 md:block" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(0,0,0,0.28))]" />
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="mb-16 text-center"
+        >
+          <h2 className="font-headline text-4xl font-extrabold tracking-tight text-secondary md:text-5xl">
+            Net Promoter Score
+          </h2>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
+            Data from more than 5,000 surveys shows how strongly the Festival resonated across
+            attendees, participants, artists, athletes, and volunteers.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut', delay: 0.05 }}
+          className="mb-16"
+        >
+          <div className="mb-8 text-center">
+            <h3 className="font-headline text-3xl font-bold text-primary">NPS Snapshot</h3>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
+            {netPromoterScores.map((item) => (
+              <div
+                key={item.label}
+                className={`rounded-2xl border p-6 text-center shadow-lg transition-transform hover:-translate-y-1 ${item.tone}`}
+              >
+                <p className="text-sm font-medium uppercase tracking-wider opacity-80">
+                  {item.label}
+                </p>
+                <p className="mt-2 font-headline text-5xl font-extrabold">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
+          className="mb-16"
+        >
+          <div className="mb-8 text-center">
+            <h3 className="font-headline text-3xl font-bold text-secondary">
+              Overall Satisfaction
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {satisfactionRatings.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-lg transition-transform hover:-translate-y-1"
+              >
+                <p className="text-sm font-medium uppercase tracking-wider text-slate-500">
+                  {item.label}
+                </p>
+                <p className="mt-2 font-headline text-4xl font-extrabold text-secondary">
+                  {item.value.toFixed(2)}
+                  <span className="ml-1 text-2xl text-slate-400">/5</span>
+                </p>
+                <div className="mt-3">
+                  <StarRating rating={item.value} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut', delay: 0.15 }}
+          className="grid grid-cols-1 gap-8 lg:grid-cols-2"
+        >
+          {cohortRatings.map((group) => (
+            <div
+              key={group.title}
+              className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg"
+            >
+              <h3 className="mb-6 text-center font-headline text-3xl font-bold text-secondary">
+                {group.title}
+              </h3>
+              <div className="space-y-5">
+                {group.rows.map((row) => (
+                  <div
+                    key={row.label}
+                    className="rounded-2xl bg-slate-50 px-5 py-4 text-center"
+                  >
+                    <p className="text-sm font-medium uppercase tracking-wider text-slate-500">
+                      {row.label}
+                    </p>
+                    <p className="mt-2 font-headline text-4xl font-extrabold text-secondary">
+                      {row.value.toFixed(1)}
+                      <span className="ml-1 text-2xl text-slate-400">/5</span>
+                    </p>
+                    <div className="mt-3">
+                      <StarRating rating={row.value} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
-      <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 opacity-10 md:block">
-        <svg className="h-full w-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,200 Q100,0 200,200 T400,200" fill="none" stroke="white" strokeWidth="2" />
-        </svg>
-      </div>
-      <button
-        onClick={goToPreviousStory}
-        aria-label="Previous story"
-        className={`absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white backdrop-blur-md transition-all hover:border-white/40 md:left-6 md:h-14 md:w-14 ${story.arrowButtonClass}`}
-      >
-        <ChevronLeft size={24} />
-      </button>
-      <button
-        onClick={goToNextStory}
-        aria-label="Next story"
-        className={`absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white backdrop-blur-md transition-all hover:border-white/40 md:right-6 md:h-14 md:w-14 ${story.arrowButtonClass}`}
-      >
-        <ChevronRight size={24} />
-      </button>
-      <ImpactStoryPanel story={story} onImageClick={() => setLightboxIndex(activeStory)} />
-      <PhotoLightbox
-        items={impactStories.map((item) => ({
-          src: item.imageSrc,
-          alt: item.title,
-          title: item.title,
-          description: item.description,
-          fallbackSrc: item.fallbackSrc,
-        }))}
-        activeIndex={lightboxIndex}
-        onClose={() => setLightboxIndex(null)}
-        onPrevious={() =>
-          setLightboxIndex((current) =>
-            current === null ? null : (current - 1 + impactStories.length) % impactStories.length,
-          )
-        }
-        onNext={() =>
-          setLightboxIndex((current) =>
-            current === null ? null : (current + 1) % impactStories.length,
-          )
-        }
-      />
     </section>
   );
 }
