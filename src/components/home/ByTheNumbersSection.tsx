@@ -26,7 +26,7 @@ const byTheNumbersStats: ByTheNumbersStat[] = [
   },
   {
     img: '/icon-flags2.png',
-    number: '60+',
+    number: '50+',
     title: 'Countries Represented',
     bodyText: 'A true celebration of global diversity and unity',
     colorClass: 'text-green-600',
