@@ -176,6 +176,20 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
         href: '/video-faanoos.mp4',
         thumbnailSrc: '/video-faanoos-still.png',
       },
+      {
+        id: 'sustainability-impact-report-duplicate',
+        title: 'Impact Report',
+        type: 'pdf',
+        href: '/Impact%20Report%2023March.pdf',
+        thumbnailSrc: '/gallery-2.jpg',
+      },
+      {
+        id: 'sustainability-faanoos-video-duplicate',
+        title: 'Faanoos Video',
+        type: 'video',
+        href: '/video-faanoos.mp4',
+        thumbnailSrc: '/video-faanoos-still.png',
+      },
     ],
     points: [
       {
