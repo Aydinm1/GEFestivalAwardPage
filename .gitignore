@@ -7,3 +7,4 @@ coverage/
 .env*
 .ftpquota
 .vscode/ftp-kr.json
+.vscode/sftp.json
