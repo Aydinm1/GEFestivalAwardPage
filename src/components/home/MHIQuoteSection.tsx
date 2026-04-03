@@ -1,16 +1,16 @@
 import { motion } from 'motion/react';
 
-const overviewContent = {
+const mhiQuoteContent = {
   body:
     'To fulfill our potential as creatives or athletes is to realise a blessing. Sport and the arts are not only beautiful, they have a unique power to build bridges. Strangers who might not speak each other’s language can still come together to enjoy the same game of cricket or football and feel exactly the same passions. The poetry of great basketball, or volleyball, or wrestling is identical, whatever land you are from. And people who have different perspectives on almost everything can still fall under the same spell when they hear great music or see a beautiful piece of art.',
   quoteBy: 'His Highness Prince Rahim Aga Khan V',
   quoteRole: 'Opening Ceremony - Global Encounters Festival 2025',
 };
 
-export default function OverviewSection() {
+export default function MHIQuoteSection() {
   return (
     <section
-      id="overview-section"
+      id="mhi-quote-section"
       className="relative overflow-hidden bg-[#FCFBF8] px-6 py-[6.25rem] md:py-[7.5rem]"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -40,15 +40,15 @@ export default function OverviewSection() {
             <div className="lg:pl-8">
               <blockquote className="space-y-6">
                 <p className="text-base leading-7 text-slate-600 md:text-[1.15rem] md:leading-8">
-                  "{overviewContent.body}"
+                  "{mhiQuoteContent.body}"
                 </p>
                 <footer className="flex flex-col items-center justify-center gap-4 border-t border-slate-200 pt-6 sm:flex-row lg:justify-start">
                   <div className="hidden h-px w-10 shrink-0 bg-gradient-to-r from-primary to-guide-light-blue sm:block" />
                   <div>
                     <p className="text-sm font-bold uppercase tracking-[0.16em] text-secondary">
-                      {overviewContent.quoteBy}
+                      {mhiQuoteContent.quoteBy}
                     </p>
-                    <p className="mt-1 text-sm text-slate-500">{overviewContent.quoteRole}</p>
+                    <p className="mt-1 text-sm text-slate-500">{mhiQuoteContent.quoteRole}</p>
                   </div>
                 </footer>
               </blockquote>

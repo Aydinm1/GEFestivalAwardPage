@@ -4,7 +4,7 @@ import ByTheNumbersSection from './ByTheNumbersSection.tsx';
 import HeroSection from './HeroSection.tsx';
 import ImpactSection from './ImpactSection.tsx';
 import FestivalHighlightsSection from './FestivalHighlightsSection.tsx';
-import OverviewSection from './OverviewSection.tsx';
+import MHIQuoteSection from './MHIQuoteSection.tsx';
 import TestimonialsSection from './TestimonialsSection.tsx';
 
 type HomePageProps = {
@@ -24,7 +24,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   return (
       <>
         <HeroSection onNavigate={handleNavigate} />
-        <OverviewSection />
+        <MHIQuoteSection />
         <ByTheNumbersSection />
         <FestivalHighlightsSection
           selectedHighlightIndex={selectedHighlightIndex}
