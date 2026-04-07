@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
+const heroVideoSrc = `${import.meta.env.BASE_URL}hero-video.mp4`;
+const impactImagePosterSrc = `${import.meta.env.BASE_URL}impact-image.jpeg`;
+const gallery2PosterSrc = `${import.meta.env.BASE_URL}gallery-2.jpg`;
+const gallery3PosterSrc = `${import.meta.env.BASE_URL}gallery-3.jpeg`;
+
 const impactPages = [
   {
     id: 'investment',
@@ -13,8 +18,8 @@ const impactPages = [
       'Scholarships for youth athletes',
       'Cultural archival technology grants',
     ],
-    videoSrc: '/hero-video.mp4',
-    posterSrc: '/impact-image.jpeg',
+    videoSrc: heroVideoSrc,
+    posterSrc: impactImagePosterSrc,
   },
   {
     id: 'participants',
@@ -28,7 +33,7 @@ const impactPages = [
       'Global networking events for professionals',
     ],
     videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-concert-40291-large.mp4',
-    posterSrc: '/gallery-2.jpg',
+    posterSrc: gallery2PosterSrc,
   },
   {
     id: 'outcomes',
@@ -41,8 +46,8 @@ const impactPages = [
       'Increased cultural preservation and awareness',
       'High participant satisfaction and engagement',
     ],
-    videoSrc: '/hero-video.mp4',
-    posterSrc: '/gallery-3.jpeg',
+    videoSrc: heroVideoSrc,
+    posterSrc: gallery3PosterSrc,
   },
 ];
 
