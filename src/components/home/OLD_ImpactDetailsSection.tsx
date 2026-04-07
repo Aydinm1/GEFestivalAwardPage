@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { publicAsset } from '../../lib/publicAsset.ts';
 
 const impactPages = [
   {
@@ -13,8 +14,8 @@ const impactPages = [
       'Scholarships for youth athletes',
       'Cultural archival technology grants',
     ],
-    videoSrc: '/Hero-Video.mp4',
-    posterSrc: '/impact-image.jpeg',
+    videoSrc: publicAsset('Hero-Video.mp4'),
+    posterSrc: publicAsset('impact-image.jpeg'),
   },
   {
     id: 'participants',
@@ -28,7 +29,7 @@ const impactPages = [
       'Global networking events for professionals',
     ],
     videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-concert-40291-large.mp4',
-    posterSrc: '/gallery-2.jpg',
+    posterSrc: publicAsset('gallery-2.jpg'),
   },
   {
     id: 'outcomes',
@@ -41,8 +42,8 @@ const impactPages = [
       'Increased cultural preservation and awareness',
       'High participant satisfaction and engagement',
     ],
-    videoSrc: '/Hero-Video.mp4',
-    posterSrc: '/gallery-3.jpeg',
+    videoSrc: publicAsset('Hero-Video.mp4'),
+    posterSrc: publicAsset('gallery-3.jpeg'),
   },
 ];
 
