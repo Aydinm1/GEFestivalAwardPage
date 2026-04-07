@@ -1,0 +1,298 @@
+{
+  "ftp://ftpadmin@gefestival.org@ftp.gefestival.org:21": {
+    ".ftp-deploy-sync-state.json": {
+      "type": "-",
+      "size": 9460,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".ftpquota": {
+      "type": "-",
+      "size": 5,
+      "lmtime": 1775234643440,
+      "modified": false
+    },
+    ".gitignore": {
+      "type": "-",
+      "size": 71,
+      "lmtime": 0,
+      "modified": false
+    },
+    "00001___250719__SH1L1168_Shama Hakim manji.JPEG": {
+      "type": "-",
+      "size": 4654024,
+      "lmtime": 0,
+      "modified": false
+    },
+    "AKDN Pavilion Highlights.html": {
+      "type": "-",
+      "size": 1522663,
+      "lmtime": 0,
+      "modified": false
+    },
+    "AKDN Pavilion Highlights_files": {},
+    "GE_Festival_Signature_2025.png": {
+      "type": "-",
+      "size": 97898,
+      "lmtime": 0,
+      "modified": false
+    },
+    "Hero-Video2.mp4": {
+      "type": "-",
+      "size": 132,
+      "lmtime": 0,
+      "modified": true
+    },
+    "Impact Report 23March.pdf": {
+      "type": "-",
+      "size": 17004360,
+      "lmtime": 0,
+      "modified": false
+    },
+    "Parent Logo Global Encounters (2).png": {
+      "type": "-",
+      "size": 44505,
+      "lmtime": 0,
+      "modified": false
+    },
+    "SportIcons.png": {
+      "type": "-",
+      "size": 452090,
+      "lmtime": 0,
+      "modified": false
+    },
+    "assets": {},
+    "dev": {},
+    "dist": {},
+    "gallery-1.jpeg": {
+      "type": "-",
+      "size": 37671,
+      "lmtime": 0,
+      "modified": true
+    },
+    "gallery-2.jpg": {
+      "type": "-",
+      "size": 670916,
+      "lmtime": 0,
+      "modified": true
+    },
+    "gallery-3.jpeg": {
+      "type": "-",
+      "size": 34243,
+      "lmtime": 0,
+      "modified": true
+    },
+    "gallery-4.jpg": {
+      "type": "-",
+      "size": 32443,
+      "lmtime": 0,
+      "modified": true
+    },
+    "hero-video.mp4": {
+      "type": "-",
+      "size": 132,
+      "lmtime": 0,
+      "modified": true
+    },
+    "icon-athlete.png": {
+      "type": "-",
+      "size": 210657,
+      "lmtime": 0,
+      "modified": false
+    },
+    "icon-attendees.png": {
+      "type": "-",
+      "size": 222460,
+      "lmtime": 0,
+      "modified": false
+    },
+    "icon-broadcast.png": {
+      "type": "-",
+      "size": 179014,
+      "lmtime": 0,
+      "modified": false
+    },
+    "icon-flags.png": {
+      "type": "-",
+      "size": 210530,
+      "lmtime": 0,
+      "modified": false
+    },
+    "icon-flags2.png": {
+      "type": "-",
+      "size": 212465,
+      "lmtime": 0,
+      "modified": false
+    },
+    "icon-globe.png": {
+      "type": "-",
+      "size": 99110,
+      "lmtime": 0,
+      "modified": false
+    },
+    "icon-volunteers.png": {
+      "type": "-",
+      "size": 222179,
+      "lmtime": 0,
+      "modified": false
+    },
+    "impact-image.jpeg": {
+      "type": "-",
+      "size": 344745,
+      "lmtime": 0,
+      "modified": true
+    },
+    "index.html": {
+      "type": "-",
+      "size": 409,
+      "lmtime": 0,
+      "modified": true
+    },
+    "logo-short.png": {
+      "type": "-",
+      "size": 74585,
+      "lmtime": 0,
+      "modified": false
+    },
+    "logo.png": {
+      "type": "-",
+      "size": 83177,
+      "lmtime": 0,
+      "modified": false
+    },
+    "pattern.jpg": {
+      "type": "-",
+      "size": 724036,
+      "lmtime": 0,
+      "modified": false
+    },
+    "src": {},
+    "video-AKDN.mp4": {
+      "type": "-",
+      "size": 132,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-IFF.mp4": {
+      "type": "-",
+      "size": 132,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-akdn-still.jpg": {
+      "type": "-",
+      "size": 156042,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-art-gallery.mp4": {
+      "type": "-",
+      "size": 132,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-closing-still.jpg": {
+      "type": "-",
+      "size": 173299,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-closing.mp4": {
+      "type": "-",
+      "size": 133,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-faanoos-still.png": {
+      "type": "-",
+      "size": 2434065,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-faanoos.mp4": {
+      "type": "-",
+      "size": 133,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-iag-still.jpg": {
+      "type": "-",
+      "size": 171839,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-iff-still.jpg": {
+      "type": "-",
+      "size": 162744,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-ipas-still.png": {
+      "type": "-",
+      "size": 1672188,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-ipas.mp4": {
+      "type": "-",
+      "size": 133,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-jg-still.png": {
+      "type": "-",
+      "size": 1912740,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-jg.mp4": {
+      "type": "-",
+      "size": 132,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-main-still.png": {
+      "type": "-",
+      "size": 2245995,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-main.mp4": {
+      "type": "-",
+      "size": 133,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-opening-still.jpg": {
+      "type": "-",
+      "size": 143956,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-opening.mp4": {
+      "type": "-",
+      "size": 133,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-sustainability-still.jpeg": {
+      "type": "-",
+      "size": 256003,
+      "lmtime": 0,
+      "modified": true
+    },
+    "video-sustainability.mp4": {
+      "type": "-",
+      "size": 133,
+      "lmtime": 0,
+      "modified": true
+    },
+    "voronoi.svg": {
+      "type": "-",
+      "size": 341,
+      "lmtime": 0,
+      "modified": false
+    }
+  },
+  "$version": 1
+}

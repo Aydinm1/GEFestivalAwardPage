@@ -22,7 +22,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           poster="/impact-image.jpeg"
           className="absolute inset-0 h-full w-full object-cover object-[center_92%] scale-[1.04]"
         >
-          <source src="/Hero-Video2.mp4" type="video/mp4" />
+          <source src="/Hero-Video.mp4" type="video/mp4" />
           <source
             src="https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-concert-40291-large.mp4"
             type="video/mp4"
