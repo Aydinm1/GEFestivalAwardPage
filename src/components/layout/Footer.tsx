@@ -1,4 +1,5 @@
 import { ArrowRight, Building2 } from 'lucide-react';
+import { publicAsset } from '../../lib/publicAsset.ts';
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
         <div className="space-y-6">
           <div className="mb-4 flex items-center gap-3">
             <img
-              src="/logo.png"
+              src={publicAsset('logo.png')}
               alt="Global Encounters Logo"
               className="h-10 w-10 object-contain"
               referrerPolicy="no-referrer"

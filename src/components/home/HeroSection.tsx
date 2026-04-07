@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { publicAsset } from '../../lib/publicAsset.ts';
 
 type HeroSectionProps = {
   onNavigate: (sectionId: string, storyIndex?: number) => void;
@@ -19,10 +20,10 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           muted
           playsInline
           preload="metadata"
-          poster="/impact-image.jpeg"
+          poster={publicAsset('impact-image.jpeg')}
           className="absolute inset-0 h-full w-full object-cover object-[center_92%] scale-[1.04]"
         >
-          <source src="/Hero-Video.mp4" type="video/mp4" />
+          <source src={publicAsset('hero-video.mp4')} type="video/mp4" />
           <source
             src="https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-concert-40291-large.mp4"
             type="video/mp4"
@@ -37,7 +38,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         className="absolute left-6 top-0 z-30 flex items-center justify-center rounded-b-xl bg-transparent px-0 transition-transform hover:scale-[1.02] md:left-20"
       >
         <img
-          src="/logo.png"
+          src={publicAsset('logo.png')}
           alt="Global Encounters Logo"
           loading="eager"
           decoding="async"

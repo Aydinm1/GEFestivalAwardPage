@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { publicAsset } from '../../lib/publicAsset.ts';
 
 const mhiQuoteContent = {
   body:
@@ -27,7 +28,7 @@ export default function MHIQuoteSection() {
         <div className="relative grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12">
           <div className="flex items-center justify-center px-8 lg:px-0">
             <img
-              src="/GE_Festival_Signature_2025.png"
+              src={publicAsset('GE_Festival_Signature_2025.png')}
               alt="Global Encounters Festival 2025 Signature"
               loading="lazy"
               decoding="async"
