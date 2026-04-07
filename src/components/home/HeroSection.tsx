@@ -10,7 +10,7 @@ const heroLinks = [
   { id: 'vision-section', label: 'Sustainability', storyIndex: 6 },
 ];
 
-const heroVideoSrc = `${import.meta.env.BASE_URL}hero-video.mp4`;
+const heroVideoSrc = `${import.meta.env.BASE_URL}Hero-Video2.mp4`;
 const heroPosterSrc = `${import.meta.env.BASE_URL}impact-image.jpeg`;
 const heroLogoSrc = `${import.meta.env.BASE_URL}logo.png`;
 
