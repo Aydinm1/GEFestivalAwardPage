@@ -14,7 +14,7 @@ const impactPages = [
       'Scholarships for youth athletes',
       'Cultural archival technology grants',
     ],
-    videoSrc: publicAsset('Hero-Video.mp4'),
+    videoSrc: publicAsset('hero-video.mp4'),
     posterSrc: publicAsset('impact-image.jpeg'),
   },
   {
@@ -42,7 +42,7 @@ const impactPages = [
       'Increased cultural preservation and awareness',
       'High participant satisfaction and engagement',
     ],
-    videoSrc: publicAsset('Hero-Video.mp4'),
+    videoSrc: publicAsset('hero-video.mp4'),
     posterSrc: publicAsset('gallery-3.jpeg'),
   },
 ];
