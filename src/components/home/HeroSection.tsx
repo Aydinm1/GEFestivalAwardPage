@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { publicAsset } from '../../lib/publicAsset.ts';
 
 type HeroSectionProps = {
   onNavigate: (sectionId: string, storyIndex?: number) => void;
@@ -10,65 +10,25 @@ const heroLinks = [
   { id: 'vision-section', label: 'Sustainability', storyIndex: 6 },
 ];
 
-const heroVideoSrc = `${import.meta.env.BASE_URL}Hero-Video2.mp4`;
-const heroPosterSrc = `${import.meta.env.BASE_URL}impact-image.jpeg`;
-const heroLogoSrc = `${import.meta.env.BASE_URL}logo.png`;
-
 export default function HeroSection({ onNavigate }: HeroSectionProps) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [hasVideoError, setHasVideoError] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (!video || hasVideoError) {
-      return;
-    }
-
-    const startPlayback = async () => {
-      try {
-        video.muted = true;
-        video.defaultMuted = true;
-        await video.play();
-      } catch {
-        // Let the browser show the poster if autoplay is blocked in dev.
-      }
-    };
-
-    if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
-      void startPlayback();
-      return;
-    }
-
-    video.addEventListener('canplay', startPlayback, { once: true });
-    return () => video.removeEventListener('canplay', startPlayback);
-  }, [hasVideoError]);
-
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0">
-        {hasVideoError ? (
-          <img
-            src={heroPosterSrc}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover object-[center_92%] scale-[1.04]"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={publicAsset('impact-image.jpeg')}
+          className="absolute inset-0 h-full w-full object-cover object-[center_92%] scale-[1.04]"
+        >
+          <source src={publicAsset('hero-video.mp4')} type="video/mp4" />
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-concert-40291-large.mp4"
+            type="video/mp4"
           />
-        ) : (
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            poster={heroPosterSrc}
-            className="absolute inset-0 h-full w-full object-cover object-[center_92%] scale-[1.04]"
-            onError={() => setHasVideoError(true)}
-          >
-            <source src={heroVideoSrc} type="video/mp4" />
-          </video>
-        )}
+        </video>
         <div className="absolute inset-0 bg-secondary/48" />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary/82 via-secondary/20 to-transparent" />
       </div>
@@ -78,7 +38,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         className="absolute left-6 top-0 z-30 flex items-center justify-center rounded-b-xl bg-transparent px-0 transition-transform hover:scale-[1.02] md:left-20"
       >
         <img
-          src={heroLogoSrc}
+          src={publicAsset('logo.png')}
           alt="Global Encounters Logo"
           loading="eager"
           decoding="async"

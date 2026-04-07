@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { Dispatch, SetStateAction, useState } from 'react';
+import { publicAsset } from '../../lib/publicAsset.ts';
 import FestivalHighlightPanel, { type FestivalHighlight } from './FestivalHighlightPanel.tsx';
 
 type FestivalHighlightTheme = {
@@ -18,8 +19,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-primary',
     ambientLeftClass: 'bg-guide-light-blue/18',
     ambientRightClass: 'bg-secondary/10',
-    videoSrc: '/video-main.mp4',
-    posterSrc: '/video-main-still.png',
+    videoSrc: publicAsset('video-main.mp4'),
+    posterSrc: publicAsset('video-main-still.webp'),
     glowClass: 'bg-primary/25',
     badgeClass: 'border-primary/30 bg-primary/20 text-blue-100',
     points: [
@@ -41,8 +42,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-guide-teal',
     ambientLeftClass: 'bg-guide-light-blue/16',
     ambientRightClass: 'bg-primary/10',
-    videoSrc: '/video-AKDN.mp4',
-    posterSrc: '/video-akdn-still.jpg',
+    videoSrc: publicAsset('video-AKDN.mp4'),
+    posterSrc: publicAsset('video-akdn-still.jpg'),
     glowClass: 'bg-guide-teal/25',
     badgeClass: 'border-guide-teal/30 bg-guide-teal/20 text-teal-100',
     points: [
@@ -63,11 +64,11 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-[#ae8850]',
     ambientLeftClass: 'bg-guide-yellow/12',
     ambientRightClass: 'bg-secondary/10',
-    videoSrc: '/video-jg.mp4',
-    posterSrc: '/video-jg-still.png',
+    videoSrc: publicAsset('video-jg.mp4'),
+    posterSrc: publicAsset('video-jg-still.webp'),
     glowClass: 'bg-guide-gold/18',
     badgeClass: 'border-white/24 bg-white/12 text-white',
-    bottomImageSrc: '/SportIcons.png',
+    bottomImageSrc: publicAsset('SportIcons.png'),
     points: [
       {
         title: 'Youth and Future Talent',
@@ -87,8 +88,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-[#b43f7d]',
     ambientLeftClass: 'bg-guide-purple/14',
     ambientRightClass: 'bg-primary/10',
-    videoSrc: '/video-IFF.mp4',
-    posterSrc: '/video-iff-still.jpg',
+    videoSrc: publicAsset('video-IFF.mp4'),
+    posterSrc: publicAsset('video-iff-still.jpg'),
     glowClass: 'bg-guide-magenta/18',
     badgeClass: 'border-white/24 bg-white/12 text-white',
     points: [
@@ -110,8 +111,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-accent-orange',
     ambientLeftClass: 'bg-guide-yellow/10',
     ambientRightClass: 'bg-secondary/15',
-    videoSrc: '/video-art-gallery.mp4',
-    posterSrc: '/video-iag-still.jpg',
+    videoSrc: publicAsset('video-art-gallery.mp4'),
+    posterSrc: publicAsset('video-iag-still.jpg'),
     glowClass: 'bg-guide-yellow/20',
     badgeClass: 'border-guide-yellow/30 bg-guide-yellow/20 text-yellow-100',
     points: [
@@ -133,8 +134,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-primary',
     ambientLeftClass: 'bg-guide-light-blue/18',
     ambientRightClass: 'bg-secondary/10',
-    videoSrc: '/video-ipas.mp4',
-    posterSrc: '/video-ipas-still.png',
+    videoSrc: publicAsset('video-ipas.mp4'),
+    posterSrc: publicAsset('video-ipas-still.webp'),
     glowClass: 'bg-primary/25',
     badgeClass: 'border-primary/30 bg-primary/20 text-blue-100',
     points: [
@@ -156,8 +157,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-emerald-700',
     ambientLeftClass: 'bg-emerald-400/10',
     ambientRightClass: 'bg-teal-500/10',
-    videoSrc: '/video-sustainability.mp4',
-    posterSrc: '/video-sustainability-still.jpeg',
+    videoSrc: publicAsset('video-sustainability.mp4'),
+    posterSrc: publicAsset('video-sustainability-still.jpeg'),
     glowClass: 'bg-emerald-500/20',
     badgeClass: 'border-emerald-300/30 bg-emerald-300/20 text-emerald-100',
     points: [
@@ -179,8 +180,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-[#ae8850]',
     ambientLeftClass: 'bg-guide-yellow/12',
     ambientRightClass: 'bg-secondary/10',
-    videoSrc: '/video-faanoos.mp4',
-    posterSrc: '/video-faanoos-still.png',
+    videoSrc: publicAsset('video-faanoos.mp4'),
+    posterSrc: publicAsset('video-faanoos-still.webp'),
     glowClass: 'bg-guide-gold/18',
     badgeClass: 'border-white/24 bg-white/12 text-white',
     points: [
@@ -202,8 +203,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-[#5b2c6f]',
     ambientLeftClass: 'bg-white/10',
     ambientRightClass: 'bg-primary/15',
-    videoSrc: '/video-opening.mp4',
-    posterSrc: '/video-opening-still.jpg',
+    videoSrc: publicAsset('video-opening.mp4'),
+    posterSrc: publicAsset('video-opening-still.jpg'),
     glowClass: 'bg-white/20',
     badgeClass: 'border-white/24 bg-white/12 text-white',
     points: [
@@ -225,8 +226,8 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     sectionClass: 'bg-secondary',
     ambientLeftClass: 'bg-guide-light-blue/15',
     ambientRightClass: 'bg-accent-orange/10',
-    videoSrc: '/video-closing.mp4',
-    posterSrc: '/video-closing-still.jpg',
+    videoSrc: publicAsset('video-closing.mp4'),
+    posterSrc: publicAsset('video-closing-still.jpg'),
     glowClass: 'bg-secondary/20',
     badgeClass: 'border-white/24 bg-white/12 text-white',
     points: [

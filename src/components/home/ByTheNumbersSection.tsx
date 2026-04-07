@@ -1,6 +1,7 @@
 import ByTheNumbersStatCard, { type ByTheNumbersStat } from './ByTheNumbersStatCard.tsx';
+import { publicAsset } from '../../lib/publicAsset.ts';
 
-const sharedStatImage = '/icon-athlete.png';
+const sharedStatImage = publicAsset('icon-athlete.png');
 
 const byTheNumbersStats: ByTheNumbersStat[] = [
   {
@@ -11,35 +12,35 @@ const byTheNumbersStats: ByTheNumbersStat[] = [
     colorClass: 'text-primary',
   },
   {
-    img: '/icon-attendees.png',
+    img: publicAsset('icon-attendees.png'),
     number: '18,000+',
     title: 'Attendees',
     bodyText: 'Where thousands gather to celebrate culture, creativity, and connection',
     colorClass: 'text-purple-600',
   },
   {
-    img: '/icon-volunteers.png',
+    img: publicAsset('icon-volunteers.png'),
     number: '2,800+',
     title: 'Volunteers',
     bodyText: 'Powered by passion, purpose, and community spirit',
     colorClass: 'text-orange-600',
   },
   {
-    img: '/icon-flags2.png',
+    img: publicAsset('icon-flags2.png'),
     number: '50+',
     title: 'Countries Represented',
     bodyText: 'A true celebration of global diversity and unity',
     colorClass: 'text-green-600',
   },
   {
-    img: '/icon-globe.png',
+    img: publicAsset('icon-globe.png'),
     number: '600+',
     title: 'Events Around The World',
     bodyText: 'Hundreds of moments designed to inspire and engage',
     colorClass: 'text-yellow-600',
   },
   {
-    img: '/icon-broadcast.png',
+    img: publicAsset('icon-broadcast.png'),
     number: '1M+',
     title: 'Online Viewers',
     bodyText: 'Inspiring millions through a shared digital experience',
@@ -57,7 +58,7 @@ export default function ByTheNumbersSection() {
         {Array.from({ length: 4 }).map((_, index) => (
           <div key={index} className="overflow-hidden">
             <img
-              src="/pattern.jpg"
+              src={publicAsset('pattern.jpg')}
               alt=""
               aria-hidden="true"
               className="h-full w-full object-cover object-top"
