@@ -21,7 +21,7 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     ambientLeftClass: 'bg-guide-light-blue/18',
     ambientRightClass: 'bg-secondary/10',
     videoSrc: publicAsset('video-main.mp4'),
-    posterSrc: publicAsset('video-main-still.png'),
+    posterSrc: publicAsset('video-main-still.webp'),
     glowClass: 'bg-primary/25',
     badgeClass: 'border-primary/30 bg-primary/20 text-blue-100',
     points: [
@@ -66,7 +66,7 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     ambientLeftClass: 'bg-guide-yellow/12',
     ambientRightClass: 'bg-secondary/10',
     videoSrc: publicAsset('video-jg.mp4'),
-    posterSrc: publicAsset('video-jg-still.png'),
+    posterSrc: publicAsset('video-jg-still.webp'),
     glowClass: 'bg-guide-gold/18',
     badgeClass: 'border-white/24 bg-white/12 text-white',
     bottomImageSrc: publicAsset('SportIcons.png'),
@@ -136,7 +136,7 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     ambientLeftClass: 'bg-guide-light-blue/18',
     ambientRightClass: 'bg-secondary/10',
     videoSrc: publicAsset('video-ipas.mp4'),
-    posterSrc: publicAsset('video-ipas-still.png'),
+    posterSrc: publicAsset('video-ipas-still.webp'),
     glowClass: 'bg-primary/25',
     badgeClass: 'border-primary/30 bg-primary/20 text-blue-100',
     points: [
@@ -175,7 +175,7 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
         title: 'Faanoos Video',
         type: 'video',
         href: publicAsset('video-faanoos.mp4'),
-        thumbnailSrc: publicAsset('video-faanoos-still.png'),
+        thumbnailSrc: publicAsset('video-faanoos-still.webp'),
       },
       {
         id: 'sustainability-impact-report-duplicate',
@@ -189,7 +189,7 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
         title: 'Faanoos Video',
         type: 'video',
         href: publicAsset('video-faanoos.mp4'),
-        thumbnailSrc: publicAsset('video-faanoos-still.png'),
+        thumbnailSrc: publicAsset('video-faanoos-still.webp'),
       },
     ],
     points: [
@@ -212,7 +212,7 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
     ambientLeftClass: 'bg-guide-yellow/12',
     ambientRightClass: 'bg-secondary/10',
     videoSrc: publicAsset('video-faanoos.mp4'),
-    posterSrc: publicAsset('video-faanoos-still.png'),
+    posterSrc: publicAsset('video-faanoos-still.webp'),
     glowClass: 'bg-guide-gold/18',
     badgeClass: 'border-white/24 bg-white/12 text-white',
     points: [
