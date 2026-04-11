@@ -179,7 +179,7 @@ export const festivalHighlights: FestivalHighlightSlide[] = [
       },
       {
         id: 'sustainability-impact-report-duplicate',
-        title: 'Impact Report',
+        title: 'Athlete Uniforms',
         type: 'pdf',
         href: publicAsset('Impact%20Report%2023March.pdf'),
         thumbnailSrc: publicAsset('gallery-2.jpg'),
